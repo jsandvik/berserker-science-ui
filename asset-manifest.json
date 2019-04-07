@@ -1,14 +1,15 @@
 {
   "main.css": "/berserker-frontend/static/css/main.50966793.chunk.css",
-  "main.js": "/berserker-frontend/static/js/main.8dbcec99.chunk.js",
-  "main.js.map": "/berserker-frontend/static/js/main.8dbcec99.chunk.js.map",
+  "main.js": "/berserker-frontend/static/js/main.b1eaf66c.chunk.js",
+  "main.js.map": "/berserker-frontend/static/js/main.b1eaf66c.chunk.js.map",
   "runtime~main.js": "/berserker-frontend/static/js/runtime~main.3e073358.js",
   "runtime~main.js.map": "/berserker-frontend/static/js/runtime~main.3e073358.js.map",
-  "static/js/2.6efc73d3.chunk.js": "/berserker-frontend/static/js/2.6efc73d3.chunk.js",
-  "static/js/2.6efc73d3.chunk.js.map": "/berserker-frontend/static/js/2.6efc73d3.chunk.js.map",
+  "static/css/2.7211a5fe.chunk.css": "/berserker-frontend/static/css/2.7211a5fe.chunk.css",
+  "static/js/2.137fafdc.chunk.js": "/berserker-frontend/static/js/2.137fafdc.chunk.js",
+  "static/js/2.137fafdc.chunk.js.map": "/berserker-frontend/static/js/2.137fafdc.chunk.js.map",
   "index.html": "/berserker-frontend/index.html",
-  "precache-manifest.ccbfc8ff647032cd389eef617823b459.js": "/berserker-frontend/precache-manifest.ccbfc8ff647032cd389eef617823b459.js",
+  "precache-manifest.13625b9decf60dc6cef7a094e03c4e1e.js": "/berserker-frontend/precache-manifest.13625b9decf60dc6cef7a094e03c4e1e.js",
   "service-worker.js": "/berserker-frontend/service-worker.js",
-  "static/css/main.50966793.chunk.css.map": "/berserker-frontend/static/css/main.50966793.chunk.css.map",
-  "static/media/logo.svg": "/berserker-frontend/static/media/logo.5d5d9eef.svg"
+  "static/css/2.7211a5fe.chunk.css.map": "/berserker-frontend/static/css/2.7211a5fe.chunk.css.map",
+  "static/css/main.50966793.chunk.css.map": "/berserker-frontend/static/css/main.50966793.chunk.css.map"
 }
