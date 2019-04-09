@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/berserker-frontend/precache-manifest.f5bc222480bcbe69c640d6d5ba835a56.js"
+  "/soulcalibur/precache-manifest.695138ee9248b784aa2a478a3682a6c4.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/berserker-frontend/index.html", {
+workbox.routing.registerNavigationRoute("/soulcalibur/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

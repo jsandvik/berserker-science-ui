@@ -1,15 +1,15 @@
 {
-  "main.css": "/berserker-frontend/static/css/main.50966793.chunk.css",
-  "main.js": "/berserker-frontend/static/js/main.30feb36d.chunk.js",
-  "main.js.map": "/berserker-frontend/static/js/main.30feb36d.chunk.js.map",
-  "runtime~main.js": "/berserker-frontend/static/js/runtime~main.3e073358.js",
-  "runtime~main.js.map": "/berserker-frontend/static/js/runtime~main.3e073358.js.map",
-  "static/css/2.7211a5fe.chunk.css": "/berserker-frontend/static/css/2.7211a5fe.chunk.css",
-  "static/js/2.137fafdc.chunk.js": "/berserker-frontend/static/js/2.137fafdc.chunk.js",
-  "static/js/2.137fafdc.chunk.js.map": "/berserker-frontend/static/js/2.137fafdc.chunk.js.map",
-  "index.html": "/berserker-frontend/index.html",
-  "precache-manifest.f5bc222480bcbe69c640d6d5ba835a56.js": "/berserker-frontend/precache-manifest.f5bc222480bcbe69c640d6d5ba835a56.js",
-  "service-worker.js": "/berserker-frontend/service-worker.js",
-  "static/css/2.7211a5fe.chunk.css.map": "/berserker-frontend/static/css/2.7211a5fe.chunk.css.map",
-  "static/css/main.50966793.chunk.css.map": "/berserker-frontend/static/css/main.50966793.chunk.css.map"
+  "main.css": "/soulcalibur/static/css/main.50966793.chunk.css",
+  "main.js": "/soulcalibur/static/js/main.4dc85902.chunk.js",
+  "main.js.map": "/soulcalibur/static/js/main.4dc85902.chunk.js.map",
+  "runtime~main.js": "/soulcalibur/static/js/runtime~main.198b2c18.js",
+  "runtime~main.js.map": "/soulcalibur/static/js/runtime~main.198b2c18.js.map",
+  "static/css/2.7211a5fe.chunk.css": "/soulcalibur/static/css/2.7211a5fe.chunk.css",
+  "static/js/2.7bf46cb0.chunk.js": "/soulcalibur/static/js/2.7bf46cb0.chunk.js",
+  "static/js/2.7bf46cb0.chunk.js.map": "/soulcalibur/static/js/2.7bf46cb0.chunk.js.map",
+  "index.html": "/soulcalibur/index.html",
+  "precache-manifest.695138ee9248b784aa2a478a3682a6c4.js": "/soulcalibur/precache-manifest.695138ee9248b784aa2a478a3682a6c4.js",
+  "service-worker.js": "/soulcalibur/service-worker.js",
+  "static/css/2.7211a5fe.chunk.css.map": "/soulcalibur/static/css/2.7211a5fe.chunk.css.map",
+  "static/css/main.50966793.chunk.css.map": "/soulcalibur/static/css/main.50966793.chunk.css.map"
 }
