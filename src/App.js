@@ -37,17 +37,25 @@ class App extends Component {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Notation</th>
+            <th>Character</th>
+            <th>Command</th>
             <th>Impact Frames</th>
+            <th>Blocked Frames</th>
+            <th>Hit Frames</th>
+            <th>Counter Hit Frames</th>
+            <th>Damage</th>
           </tr>
         </thead>
         <tbody>
           {moves.map(move =>
             <tr key={move.moveId}>
-              <td>{move.moveId}</td>
-              <td>{move.notation}</td>
+              <td>{move.character.characterName}</td>
+              <td>{move.command}</td>
               <td>{move.impactFrames}</td>
+              <td>{move.blockFrames}</td>
+              <td>{move.hitFrames}</td>
+              <td>{move.counterFrames}</td>
+              <td>{move.damage}</td>
             </tr>
           )}
         </tbody>
