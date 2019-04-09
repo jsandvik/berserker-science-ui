@@ -1,7 +1,7 @@
 {
   "name": "sc-frontend",
   "version": "0.1.0",
-  "homepage": "https://jsandvik.github.io/berserker-frontend",
+  "homepage": "https://jsandvik.github.io/soulcalibur",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
