@@ -53,7 +53,6 @@ class App extends Component {
     if (loading) {
       return <div>Loading...</div>;
     }
-    console.log(characterFilter);
 
     let filtered_moves = moves;
     if (characterFilter) {
