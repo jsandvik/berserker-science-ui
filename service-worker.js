@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/berserker-frontend/precache-manifest.13625b9decf60dc6cef7a094e03c4e1e.js"
+  "/berserker-frontend/precache-manifest.f5bc222480bcbe69c640d6d5ba835a56.js"
 );
 
 workbox.clientsClaim();
