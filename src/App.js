@@ -84,7 +84,7 @@ class App extends Component {
           </Col>
         </Row>
 
-        <Table striped bordered hover>
+        <Table striped bordered hover size="sm">
           <thead>
             <tr>
               <th>Character</th>
@@ -103,8 +103,8 @@ class App extends Component {
                 <td>{move.command}</td>
                 <td>{move.impactFrames}</td>
                 <td>{move.blockFrames}</td>
-                <td>{move.hitFrames}</td>
-                <td>{move.counterFrames}</td>
+                <td>{move.hitProperty ? move.hitProperty : move.hitFrames}</td>
+                <td>{move.counterProperty ? move.counterProperty : move.counterFrames}</td>
                 <td>{move.damage}</td>
               </tr>
             ))}
