@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/js/runtime~main.198b2c18.js"
   },
   {
-    "revision": "01653e4c2bb8526a71cf",
-    "url": "/soulcalibur/static/js/main.4dc85902.chunk.js"
+    "revision": "40dad844b0ce83733ae8",
+    "url": "/soulcalibur/static/js/main.d5b154d8.chunk.js"
   },
   {
     "revision": "a9d585e55fa716ba2033",
     "url": "/soulcalibur/static/js/2.7bf46cb0.chunk.js"
   },
   {
-    "revision": "01653e4c2bb8526a71cf",
+    "revision": "40dad844b0ce83733ae8",
     "url": "/soulcalibur/static/css/main.50966793.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/css/2.7211a5fe.chunk.css"
   },
   {
-    "revision": "b952bbbb83743753827a4f6e80551530",
+    "revision": "31064a703dea5fb6bc1908e202d02e79",
     "url": "/soulcalibur/index.html"
   }
 ];
