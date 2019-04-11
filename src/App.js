@@ -84,11 +84,12 @@ class App extends Component {
           </Col>
         </Row>
 
-        <Table striped bordered hover size="sm">
+        <Table striped bordered hover size="sm" responsive>
           <thead>
             <tr>
               <th>Character</th>
               <th>Command</th>
+              <th>Hits</th>
               <th>Impact Frames</th>
               <th>Blocked Frames</th>
               <th>Hit Frames</th>
@@ -101,6 +102,7 @@ class App extends Component {
               <tr key={move.moveId}>
                 <td>{move.character.characterName}</td>
                 <td>{move.command}</td>
+                <td>{move.attackType}</td>
                 <td>{move.impactFrames}</td>
                 <td>{move.blockFrames}</td>
                 <td>{move.hitProperty ? move.hitProperty : move.hitFrames}</td>
