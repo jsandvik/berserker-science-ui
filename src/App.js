@@ -22,7 +22,7 @@ class App extends Component {
       .then(response => response.json())
       .then(
         results => {
-          const characters = results.map(move => move.character.characterName);
+          const characters = results.map(move => move.character);
           const uniqueCharacters = characters.filter(
             (character, index) => characters.indexOf(character) >= index
           );
@@ -56,7 +56,7 @@ class App extends Component {
 
     let filtered_moves = moves;
     if (characterFilter) {
-      filtered_moves = filtered_moves.filter(move => characterFilter === move.character.characterName);
+      filtered_moves = filtered_moves.filter(move => characterFilter === move.character);
     }
     if (commandFilter) {
       filtered_moves = filtered_moves.filter(move => commandFilter === move.command);
@@ -100,14 +100,14 @@ class App extends Component {
           <tbody>
             {filtered_moves.map(move => (
               <tr key={move.moveId}>
-                <td>{move.character.characterName}</td>
+                <td>{move.character}</td>
                 <td>{move.command}</td>
-                <td>{move.attackType}</td>
+                <td>{move.attackTypes.join(", ")}</td>
                 <td>{move.impactFrames}</td>
                 <td>{move.blockFrames}</td>
                 <td>{move.hitProperty ? move.hitProperty : move.hitFrames}</td>
                 <td>{move.counterProperty ? move.counterProperty : move.counterFrames}</td>
-                <td>{move.damage}</td>
+                <td>{move.damage.join(", ")}</td>
               </tr>
             ))}
           </tbody>
