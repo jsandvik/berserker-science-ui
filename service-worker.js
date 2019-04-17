@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/soulcalibur/precache-manifest.53faf31c21b4b6ac866d53702727a108.js"
+  "/soulcalibur/precache-manifest.ba4358dac0508996ca2363ca32de9b49.js"
 );
 
 workbox.clientsClaim();
