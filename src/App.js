@@ -104,7 +104,7 @@ class App extends Component {
                 <td>{move.character}</td>
                 <td>{move.command}</td>
                 <td>{move.attackTypes.join(", ")}</td>
-                <td className="bg-primary">{move.impactFrames}</td>
+                <td>{move.impactFrames}</td>
                 <td>{move.blockFrames}</td>
                 <td>{move.hitProperty ? move.hitProperty : move.hitFrames}</td>
                 <td>{move.counterProperty ? move.counterProperty : move.counterFrames}</td>
