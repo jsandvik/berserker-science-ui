@@ -95,6 +95,7 @@ class App extends Component {
               <th>Hit Frames</th>
               <th>Counter Hit Frames</th>
               <th>Damage</th>
+              <th>Gap Frames</th>
             </tr>
           </thead>
           <tbody>
@@ -103,11 +104,12 @@ class App extends Component {
                 <td>{move.character}</td>
                 <td>{move.command}</td>
                 <td>{move.attackTypes.join(", ")}</td>
-                <td>{move.impactFrames}</td>
+                <td className="bg-primary">{move.impactFrames}</td>
                 <td>{move.blockFrames}</td>
                 <td>{move.hitProperty ? move.hitProperty : move.hitFrames}</td>
                 <td>{move.counterProperty ? move.counterProperty : move.counterFrames}</td>
                 <td>{move.damage.join(", ")}</td>
+                <td>{move.gapFrames.join(", ")}</td>
               </tr>
             ))}
           </tbody>
