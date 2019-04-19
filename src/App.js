@@ -9,6 +9,31 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 const SIZE = 100;
+const CHARACTERS = [
+  "2B",
+  "Amy",
+  "Astaroth",
+  "Azwel",
+  "Cervantes",
+  "Geralt",
+  "Groh",
+  "Ivy",
+  "Kilik",
+  "Maxi",
+  "Mitsurugi",
+  "Nightmare",
+  "Raphael",
+  "Seung Mi-na",
+  "Siegfried",
+  "Sophitia",
+  "Taki",
+  "Talim",
+  "Tira",
+  "Voldo",
+  "Xianghua",
+  "Yoshimitsu",
+  "Zasalamel"
+];
 
 class App extends Component {
   state = {
@@ -17,28 +42,25 @@ class App extends Component {
     totalPages: null,
     currentPage: 1,
     moves: [],
-    characters: [],
-    characterFilter: "",
+    character: "",
     commandFilter: ""
   };
 
-  fetchMoves = page => {
-    fetch(
-      `https://berserkerscience.herokuapp.com/moves?size=${SIZE}&page=${page}`
-    )
+  fetchMoves = (page, character) => {
+    let url = `https://berserkerscience.herokuapp.com/moves/?size=${SIZE}&page=${page}`;
+
+    if (character) {
+      url += `&character=${character}`;
+    }
+
+    fetch(url)
       .then(response => response.json())
       .then(
         results => {
-          const characters = results.moves.map(move => move.character);
-          const uniqueCharacters = characters.filter(
-            (character, index) => characters.indexOf(character) >= index
-          );
-
           this.setState({
             loading: false,
             moves: results.moves,
-            totalPages: results.numPages,
-            characters: uniqueCharacters
+            totalPages: results.numPages
           });
         },
         error => {
@@ -52,7 +74,9 @@ class App extends Component {
   };
 
   onFilterCharacter = e => {
-    this.setState({ characterFilter: e.target.value });
+    const character = e.target.value;
+    this.setState({ character, currentPage: 1 });
+    this.fetchMoves(0, character);
   };
 
   onFilterCommand = e => {
@@ -60,8 +84,9 @@ class App extends Component {
   };
 
   onPageChange = page => {
+    const { character } = this.state;
     this.setState({ currentPage: page });
-    this.fetchMoves(page - 1);
+    this.fetchMoves(page - 1, character);
   };
 
   render = () => {
@@ -69,8 +94,7 @@ class App extends Component {
       error,
       loading,
       moves,
-      characters,
-      characterFilter,
+      character,
       commandFilter,
       currentPage,
       totalPages
@@ -85,11 +109,6 @@ class App extends Component {
     }
 
     let filtered_moves = moves;
-    if (characterFilter) {
-      filtered_moves = filtered_moves.filter(
-        move => characterFilter === move.character
-      );
-    }
     if (commandFilter) {
       filtered_moves = filtered_moves.filter(
         move => commandFilter === move.command
@@ -105,10 +124,10 @@ class App extends Component {
               <Form.Control
                 onChange={this.onFilterCharacter}
                 as="select"
-                value={characterFilter}
+                value={character}
               >
                 <option value="">All</option>
-                {characters.map(character => (
+                {CHARACTERS.map(character => (
                   <option key={character}>{character}</option>
                 ))}
               </Form.Control>
