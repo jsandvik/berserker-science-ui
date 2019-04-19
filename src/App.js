@@ -4,47 +4,77 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
+import Paginator from "./Paginator.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+
+const SIZE = 100;
 
 class App extends Component {
   state = {
     loading: true,
     error: null,
+    totalPages: null,
+    currentPage: 1,
     moves: [],
     characters: [],
     characterFilter: "",
-    commandFilter: "",
+    commandFilter: ""
   };
 
-  componentDidMount = () => {
-    fetch("https://berserkerscience.herokuapp.com/moves")
+  fetchMoves = page => {
+    fetch(
+      `https://berserkerscience.herokuapp.com/moves?size=${SIZE}&page=${page}`
+    )
       .then(response => response.json())
       .then(
         results => {
-          const characters = results.map(move => move.character);
+          const characters = results.moves.map(move => move.character);
           const uniqueCharacters = characters.filter(
             (character, index) => characters.indexOf(character) >= index
           );
 
-          this.setState({ loading: false, moves: results, characters: uniqueCharacters });
+          this.setState({
+            loading: false,
+            moves: results.moves,
+            totalPages: results.numPages,
+            characters: uniqueCharacters
+          });
         },
         error => {
           this.setState({ loading: false, error });
         }
       );
-  }
+  };
 
-  onFilterCharacter = (e) => {
-    this.setState({characterFilter: e.target.value});
-  }
+  componentDidMount = () => {
+    this.fetchMoves(0);
+  };
 
-  onFilterCommand = (e) => {
-    this.setState({commandFilter: e.target.value});
-  }
+  onFilterCharacter = e => {
+    this.setState({ characterFilter: e.target.value });
+  };
+
+  onFilterCommand = e => {
+    this.setState({ commandFilter: e.target.value });
+  };
+
+  onPageChange = page => {
+    this.setState({ currentPage: page });
+    this.fetchMoves(page - 1);
+  };
 
   render = () => {
-    const { error, loading, moves, characters, characterFilter, commandFilter } = this.state;
+    const {
+      error,
+      loading,
+      moves,
+      characters,
+      characterFilter,
+      commandFilter,
+      currentPage,
+      totalPages
+    } = this.state;
 
     if (error) {
       return <div>Error loading: {error.message}</div>;
@@ -56,10 +86,14 @@ class App extends Component {
 
     let filtered_moves = moves;
     if (characterFilter) {
-      filtered_moves = filtered_moves.filter(move => characterFilter === move.character);
+      filtered_moves = filtered_moves.filter(
+        move => characterFilter === move.character
+      );
     }
     if (commandFilter) {
-      filtered_moves = filtered_moves.filter(move => commandFilter === move.command);
+      filtered_moves = filtered_moves.filter(
+        move => commandFilter === move.command
+      );
     }
 
     return (
@@ -68,7 +102,11 @@ class App extends Component {
           <Col>
             <Form.Group>
               <Form.Label>Filter Character</Form.Label>
-              <Form.Control onChange={this.onFilterCharacter} as="select" value={characterFilter}>
+              <Form.Control
+                onChange={this.onFilterCharacter}
+                as="select"
+                value={characterFilter}
+              >
                 <option value="">All</option>
                 {characters.map(character => (
                   <option key={character}>{character}</option>
@@ -79,7 +117,12 @@ class App extends Component {
           <Col>
             <Form.Group>
               <Form.Label>Filter Command</Form.Label>
-              <Form.Control onChange={this.onFilterCommand} type="text" placeholder="Example: 5A" value={commandFilter} />
+              <Form.Control
+                onChange={this.onFilterCommand}
+                type="text"
+                placeholder="Example: 5A"
+                value={commandFilter}
+              />
             </Form.Group>
           </Col>
         </Row>
@@ -107,16 +150,28 @@ class App extends Component {
                 <td>{move.impactFrames}</td>
                 <td>{move.blockFrames}</td>
                 <td>{move.hitProperty ? move.hitProperty : move.hitFrames}</td>
-                <td>{move.counterProperty ? move.counterProperty : move.counterFrames}</td>
+                <td>
+                  {move.counterProperty
+                    ? move.counterProperty
+                    : move.counterFrames}
+                </td>
                 <td>{move.damage.join(", ")}</td>
                 <td>{move.gapFrames.join(", ")}</td>
               </tr>
             ))}
           </tbody>
         </Table>
+        <div className="text-xs-center">
+          <Paginator
+            hidePreviousAndNextPageLinks
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onChange={this.onPageChange}
+          />
+        </div>
       </Container>
     );
-  }
+  };
 }
 
 export default App;
