@@ -1,15 +1,16 @@
 {
   "main.css": "/soulcalibur/static/css/main.50966793.chunk.css",
-  "main.js": "/soulcalibur/static/js/main.a8feb5ad.chunk.js",
-  "main.js.map": "/soulcalibur/static/js/main.a8feb5ad.chunk.js.map",
+  "main.js": "/soulcalibur/static/js/main.a5ff59e4.chunk.js",
+  "main.js.map": "/soulcalibur/static/js/main.a5ff59e4.chunk.js.map",
   "runtime~main.js": "/soulcalibur/static/js/runtime~main.198b2c18.js",
   "runtime~main.js.map": "/soulcalibur/static/js/runtime~main.198b2c18.js.map",
-  "static/css/2.7211a5fe.chunk.css": "/soulcalibur/static/css/2.7211a5fe.chunk.css",
-  "static/js/2.7b9006b9.chunk.js": "/soulcalibur/static/js/2.7b9006b9.chunk.js",
-  "static/js/2.7b9006b9.chunk.js.map": "/soulcalibur/static/js/2.7b9006b9.chunk.js.map",
+  "static/css/2.05366cbd.chunk.css": "/soulcalibur/static/css/2.05366cbd.chunk.css",
+  "static/js/2.d8a7b830.chunk.js": "/soulcalibur/static/js/2.d8a7b830.chunk.js",
+  "static/js/2.d8a7b830.chunk.js.map": "/soulcalibur/static/js/2.d8a7b830.chunk.js.map",
   "index.html": "/soulcalibur/index.html",
-  "precache-manifest.a930d0cbfa1ccd2a8cb4cd0b427b136c.js": "/soulcalibur/precache-manifest.a930d0cbfa1ccd2a8cb4cd0b427b136c.js",
+  "precache-manifest.2a566a9b8b37440ebc7973c313b4923f.js": "/soulcalibur/precache-manifest.2a566a9b8b37440ebc7973c313b4923f.js",
   "service-worker.js": "/soulcalibur/service-worker.js",
-  "static/css/2.7211a5fe.chunk.css.map": "/soulcalibur/static/css/2.7211a5fe.chunk.css.map",
-  "static/css/main.50966793.chunk.css.map": "/soulcalibur/static/css/main.50966793.chunk.css.map"
+  "static/css/2.05366cbd.chunk.css.map": "/soulcalibur/static/css/2.05366cbd.chunk.css.map",
+  "static/css/main.50966793.chunk.css.map": "/soulcalibur/static/css/main.50966793.chunk.css.map",
+  "static/media/open-iconic-bootstrap.css": "/soulcalibur/static/media/open-iconic.eca2c267.svg"
 }
