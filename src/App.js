@@ -8,7 +8,7 @@ import Paginator from "./Paginator.jsx";
 import SortIcon from "./SortIcon.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
-import "open-iconic/font/css/open-iconic-bootstrap.css"
+import "open-iconic/font/css/open-iconic-bootstrap.css";
 
 const SIZE = 100;
 const CHARACTERS = [
@@ -44,21 +44,34 @@ class App extends Component {
     totalPages: null,
     currentPage: 1,
     moves: [],
-    columnSort:null,
-    sortDescending:null,
+    columnSort: null,
+    sortDescending: null,
     character: "",
     commandFilter: ""
   };
 
-  fetchMoves = (page, character, attribute) => {
-    let url = `https://berserkerscience.herokuapp.com/moves/?size=${SIZE}&page=${page}`;
+  fetchMoves = () => {
+    const { currentPage, character, columnSort, sortDescending } = this.state;
+
+    let url = `https://berserkerscience.herokuapp.com/moves/?size=${SIZE}&page=${currentPage -
+      1}`;
 
     if (character) {
       url += `&character=${character}`;
     }
 
-    if (attribute) {
-      url += `&order_by=${attribute}`;
+    if (columnSort) {
+      // special case, for hit/counter sort by properties first cause they are bigger rewards
+      if (columnSort === "hit_frames") {
+        const desc = sortDescending ? "" : "-";
+        url += `&order_by=${desc}hit_property`;
+      } else if (columnSort === "counter_frames") {
+        const desc = sortDescending ? "" : "-";
+        url += `&order_by=${desc}counter_property`;
+      }
+
+      const desc = sortDescending ? "" : "-";
+      url += `&order_by=${desc}${columnSort}`;
     }
 
     fetch(url)
@@ -78,13 +91,15 @@ class App extends Component {
   };
 
   componentDidMount = () => {
-    this.fetchMoves(0);
+    this.fetchMoves();
   };
 
   onFilterCharacter = e => {
     const character = e.target.value;
-    this.setState({ character, currentPage: 1 });
-    this.fetchMoves(0, character);
+    this.setState(
+      { character, currentPage: 1, columnSort: null, sortDescending: null },
+      this.fetchMoves
+    );
   };
 
   onFilterCommand = e => {
@@ -92,16 +107,22 @@ class App extends Component {
   };
 
   onPageChange = page => {
-    const { character, columnSort } = this.state;
-    this.setState({ currentPage: page });
-    this.fetchMoves(page - 1, character, columnSort);
+    this.setState({ currentPage: page }, this.fetchMoves);
   };
 
-  onSort = (attribute) => {
-    const { character } = this.state;
-    this.setState({ columnSort: attribute, sortDescending:false });
-    this.fetchMoves(0, character, attribute);
-  }
+  onSort = attribute => {
+    const { columnSort, sortDescending } = this.state;
+
+    // default, descending == false. if selected before toggle descending
+    let descending = false;
+    if (attribute === columnSort) {
+      descending = !sortDescending;
+    }
+    this.setState(
+      { columnSort: attribute, sortDescending: descending, currentPage: 1 },
+      this.fetchMoves
+    );
+  };
 
   render = () => {
     const {
@@ -168,10 +189,34 @@ class App extends Component {
               <th>Character</th>
               <th>Command</th>
               <th>Hits</th>
-              <th onClick={() => this.onSort("impact_frames")}>Impact Frames <SortIcon active={columnSort === "impact_frames"} descending={sortDescending}/></th>
-              <th onClick={() => this.onSort("block_frames")}>Blocked Frames <SortIcon active={columnSort === "block_frames"} descending={sortDescending}/></th>
-              <th onClick={() => this.onSort("hit_frames")}>Hit Frames <SortIcon active={columnSort === "hit_frames"} descending={sortDescending}/></th>
-              <th onClick={() => this.onSort("counter_frames")}>Counter Hit Frames <SortIcon active={columnSort === "counter_frames"} descending={sortDescending}/></th>
+              <th onClick={() => this.onSort("impact_frames")}>
+                Impact Frames{" "}
+                <SortIcon
+                  active={columnSort === "impact_frames"}
+                  descending={sortDescending}
+                />
+              </th>
+              <th onClick={() => this.onSort("block_frames")}>
+                Blocked Frames{" "}
+                <SortIcon
+                  active={columnSort === "block_frames"}
+                  descending={sortDescending}
+                />
+              </th>
+              <th onClick={() => this.onSort("hit_frames")}>
+                Hit Frames{" "}
+                <SortIcon
+                  active={columnSort === "hit_frames"}
+                  descending={sortDescending}
+                />
+              </th>
+              <th onClick={() => this.onSort("counter_frames")}>
+                Counter Hit Frames{" "}
+                <SortIcon
+                  active={columnSort === "counter_frames"}
+                  descending={sortDescending}
+                />
+              </th>
               <th>Damage</th>
               <th>Gap Frames</th>
             </tr>
