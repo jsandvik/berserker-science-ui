@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import Paginator from "./Paginator.jsx";
 import SortIcon from "./SortIcon.jsx";
+import Portrait from "./Portrait.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "open-iconic/font/css/open-iconic-bootstrap.css";
@@ -224,7 +225,7 @@ class App extends Component {
           <tbody>
             {filtered_moves.map(move => (
               <tr key={move.moveId}>
-                <td>{move.character}</td>
+                <td><Portrait character={move.character}/></td>
                 <td>{move.command}</td>
                 <td>{move.attackTypes.join(", ")}</td>
                 <td>{move.impactFrames}</td>
