@@ -7,6 +7,7 @@ import Table from "react-bootstrap/Table";
 import Paginator from "./Paginator.jsx";
 import SortIcon from "./SortIcon.jsx";
 import Portrait from "./Portrait.jsx";
+import HitAttribute from "./HitAttribute.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "open-iconic/font/css/open-iconic-bootstrap.css";
@@ -154,7 +155,7 @@ class App extends Component {
     }
 
     return (
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             <Form.Group>
@@ -184,7 +185,7 @@ class App extends Component {
           </Col>
         </Row>
 
-        <Table striped bordered hover size="sm" responsive>
+        <Table striped bordered hover size="sm" responsive className="app-table">
           <thead>
             <tr>
               <th>Character</th>
@@ -227,7 +228,11 @@ class App extends Component {
               <tr key={move.moveId}>
                 <td><Portrait character={move.character}/></td>
                 <td>{move.command}</td>
-                <td>{move.attackTypes.join(", ")}</td>
+                <td>
+                  {move.attackTypes.map(attribute =>
+                    <HitAttribute attribute={attribute} />
+                  )}
+                </td>
                 <td>{move.impactFrames}</td>
                 <td>{move.blockFrames}</td>
                 <td>{move.hitProperty ? move.hitProperty : move.hitFrames}</td>

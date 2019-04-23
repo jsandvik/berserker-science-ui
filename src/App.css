@@ -31,3 +31,7 @@
     transform: rotate(360deg);
   }
 }
+
+.app-table {
+  white-space:nowrap;
+}
