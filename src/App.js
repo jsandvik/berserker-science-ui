@@ -194,35 +194,35 @@ class App extends Component {
               <th>Hits</th>
               <th>Properties</th>
               <th onClick={() => this.onSort("impact_frames")}>
-                Impact Frames{" "}
+                Impact{" "}
                 <SortIcon
                   active={columnSort === "impact_frames"}
                   descending={sortDescending}
                 />
               </th>
               <th onClick={() => this.onSort("block_frames")}>
-                Blocked Frames{" "}
+                Block{" "}
                 <SortIcon
                   active={columnSort === "block_frames"}
                   descending={sortDescending}
                 />
               </th>
               <th onClick={() => this.onSort("hit_frames")}>
-                Hit Frames{" "}
+                Hit{" "}
                 <SortIcon
                   active={columnSort === "hit_frames"}
                   descending={sortDescending}
                 />
               </th>
               <th onClick={() => this.onSort("counter_frames")}>
-                Counter Hit Frames{" "}
+                Counter{" "}
                 <SortIcon
                   active={columnSort === "counter_frames"}
                   descending={sortDescending}
                 />
               </th>
               <th>Damage</th>
-              <th>Gap Frames</th>
+              <th>Gap</th>
             </tr>
           </thead>
           <tbody>
