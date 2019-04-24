@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/seung-mi-na.5e8902f1.png"
   },
   {
-    "revision": "cf571d1bc518d74fa11c",
-    "url": "/soulcalibur/static/css/main.8ed99232.chunk.css"
+    "revision": "633f91d742684c16eb57",
+    "url": "/soulcalibur/static/css/main.ee7a0b50.chunk.css"
   },
   {
     "revision": "456c3e3f66ce3846f5b6",
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/open-iconic.eca2c267.svg"
   },
   {
-    "revision": "5b0dc5af786e507fe2bf",
-    "url": "/soulcalibur/static/js/2.ce59e8e1.chunk.js"
+    "revision": "c4a687ae36f35489c6da",
+    "url": "/soulcalibur/static/js/2.55adc648.chunk.js"
   },
   {
     "revision": "2672cc1b3f19b7c03a557776b1b7515c",
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/raphael.17d591fc.png"
   },
   {
-    "revision": "cf571d1bc518d74fa11c",
-    "url": "/soulcalibur/static/js/main.948c9f0f.chunk.js"
+    "revision": "633f91d742684c16eb57",
+    "url": "/soulcalibur/static/js/main.78e0f4da.chunk.js"
   },
   {
     "revision": "2988bfe05d1375b3216c237d4b3cbca1",
@@ -120,11 +120,11 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/open-iconic.93cc7aa6.ttf"
   },
   {
-    "revision": "5b0dc5af786e507fe2bf",
-    "url": "/soulcalibur/static/css/2.8d59d0c0.chunk.css"
+    "revision": "c4a687ae36f35489c6da",
+    "url": "/soulcalibur/static/css/2.3aef36ab.chunk.css"
   },
   {
-    "revision": "8b2c6f0cbc4e89d4e8308a5245334a70",
+    "revision": "a17837f15c0c36fa810dd9c6855a8f4f",
     "url": "/soulcalibur/index.html"
   }
 ];
