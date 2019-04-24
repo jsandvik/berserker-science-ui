@@ -1,0 +1,25 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.plus-high {
+  background-color: theme-color-level(primary, -6);
+}
+
+.plus-medium {
+  background-color: theme-color-level(primary, -8);
+}
+
+.plus-low {
+  background-color: theme-color-level(primary, -10);
+}
+
+.minus-high {
+  background-color: theme-color-level(danger, -6);
+}
+
+.minus-medium {
+  background-color: theme-color-level(danger, -8);
+}
+
+.minus-low {
+  background-color: theme-color-level(danger, -10);
+}

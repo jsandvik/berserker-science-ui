@@ -9,8 +9,9 @@ import SortIcon from "./SortIcon.jsx";
 import Portrait from "./Portrait.jsx";
 import HitAttribute from "./HitAttribute.jsx";
 import MoveProperty from "./MoveProperty.jsx";
+import Frames from "./Frames.jsx";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.css";
+import "./custom.scss";
 import "open-iconic/font/css/open-iconic-bootstrap.css";
 
 const SIZE = 100;
@@ -241,13 +242,9 @@ class App extends Component {
                   )}
                 </td>
                 <td>{move.impactFrames}</td>
-                <td>{move.blockFrames}</td>
-                <td>{move.hitProperty ? move.hitProperty : move.hitFrames}</td>
-                <td>
-                  {move.counterProperty
-                    ? move.counterProperty
-                    : move.counterFrames}
-                </td>
+                <Frames frames={move.blockFrames}/>
+                <Frames frames={move.hitFrames} property={move.hitProperty}/>
+                <Frames frames={move.counterFrames} property={move.counterProperty}/>
                 <td>{move.damage.join(", ")}</td>
                 <td>{move.gapFrames.join(", ")}</td>
               </tr>
