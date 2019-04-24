@@ -35,3 +35,7 @@
 .app-table {
   white-space:nowrap;
 }
+
+.sortable-table-header {
+  cursor: pointer;
+}
