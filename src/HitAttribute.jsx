@@ -7,11 +7,11 @@ import slow from "./hit_attributes/slow.png";
 import smid from "./hit_attributes/smid.png";
 
 const HIT_ATTRIBUTES = {
-  high: high,
-  middle: middle,
-  low: low,
-  "special middle": smid,
-  "special low": slow
+  H: high,
+  M: middle,
+  L: low,
+  SM: smid,
+  SL: slow
 };
 
 export default class HitAttribute extends Component {
@@ -23,7 +23,7 @@ export default class HitAttribute extends Component {
     }
 
     // load style based on normal/special
-    const className = attribute.includes("special")
+    const className = attribute.includes("S")
       ? styles.specialAttribute
       : styles.attribute;
 

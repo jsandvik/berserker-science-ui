@@ -8,6 +8,7 @@ import Paginator from "./Paginator.jsx";
 import SortIcon from "./SortIcon.jsx";
 import Portrait from "./Portrait.jsx";
 import HitAttribute from "./HitAttribute.jsx";
+import MoveProperty from "./MoveProperty.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "open-iconic/font/css/open-iconic-bootstrap.css";
@@ -191,6 +192,7 @@ class App extends Component {
               <th>Character</th>
               <th>Command</th>
               <th>Hits</th>
+              <th>Properties</th>
               <th onClick={() => this.onSort("impact_frames")}>
                 Impact Frames{" "}
                 <SortIcon
@@ -231,6 +233,11 @@ class App extends Component {
                 <td>
                   {move.attackTypes.map(attribute =>
                     <HitAttribute attribute={attribute} />
+                  )}
+                </td>
+                <td>
+                  {move.moveProperties.map(property =>
+                    <MoveProperty property={property} />
                   )}
                 </td>
                 <td>{move.impactFrames}</td>
