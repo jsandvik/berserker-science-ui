@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import styles from './Portrait.module.css';
+import yorha from './portraits/2B.png';
+import amy from './portraits/amy.png';
 import astaroth from './portraits/astaroth.png';
 import azwel from './portraits/azwel.png';
 import cervantes from './portraits/cervantes.png';
@@ -23,6 +25,8 @@ import yoshimitsu from './portraits/yoshimitsu.png';
 import zasalamel from './portraits/zasalamel.png';
 
 const IMAGES = {
+    "2B": yorha,
+    "Amy": amy,
     "Astaroth": astaroth,
     "Azwel": azwel,
     "Cervantes": cervantes,
