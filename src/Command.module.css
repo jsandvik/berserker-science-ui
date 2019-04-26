@@ -1,0 +1,11 @@
+img.command {
+    width: 1.4em;
+    background-color: black;
+    clip-path: inset(2% round 15%);
+    -webkit-clip-path: inset(2% round 15%);
+    margin-right: 0.2em;
+}
+
+img.direction {
+    width: 1.3em;
+}

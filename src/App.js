@@ -9,6 +9,7 @@ import SortIcon from "./SortIcon.jsx";
 import Portrait from "./Portrait.jsx";
 import HitAttribute from "./HitAttribute.jsx";
 import MoveProperty from "./MoveProperty.jsx";
+import Command from "./Command.jsx";
 import Frames from "./Frames.jsx";
 import "./App.css";
 import "./custom.scss";
@@ -266,7 +267,7 @@ class App extends Component {
                 <td>
                   <Portrait character={move.character} />
                 </td>
-                <td>{move.command}</td>
+                <td><Command command={move.command} /></td>
                 <td>
                   {move.attackTypes.map(attribute => (
                     <HitAttribute attribute={attribute} />
