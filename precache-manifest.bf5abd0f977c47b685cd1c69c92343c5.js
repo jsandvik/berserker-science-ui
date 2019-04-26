@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "5e8902f10015d758623964869c7261c9",
-    "url": "/soulcalibur/static/media/seung-mi-na.5e8902f1.png"
+    "revision": "17d591fc05b665616e9720b7e43fddb5",
+    "url": "/soulcalibur/static/media/raphael.17d591fc.png"
   },
   {
-    "revision": "45031aca2507688ff770",
-    "url": "/soulcalibur/static/css/main.ee7a0b50.chunk.css"
+    "revision": "19a8b8c886241066c6a9",
+    "url": "/soulcalibur/static/css/main.9efe7b5d.chunk.css"
   },
   {
     "revision": "456c3e3f66ce3846f5b6",
@@ -16,8 +16,16 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/open-iconic.eca2c267.svg"
   },
   {
-    "revision": "784107d8245aab155358",
-    "url": "/soulcalibur/static/js/2.8f759f60.chunk.js"
+    "revision": "07c4ec8045af843d86bb",
+    "url": "/soulcalibur/static/js/2.34333404.chunk.js"
+  },
+  {
+    "revision": "1510a9b72e479495f77966599440b093",
+    "url": "/soulcalibur/static/media/2B.1510a9b7.png"
+  },
+  {
+    "revision": "c3c798db87f2718ff77ba923f974de16",
+    "url": "/soulcalibur/static/media/amy.c3c798db.png"
   },
   {
     "revision": "2672cc1b3f19b7c03a557776b1b7515c",
@@ -60,12 +68,12 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/nightmare.61a75041.png"
   },
   {
-    "revision": "17d591fc05b665616e9720b7e43fddb5",
-    "url": "/soulcalibur/static/media/raphael.17d591fc.png"
+    "revision": "19a8b8c886241066c6a9",
+    "url": "/soulcalibur/static/js/main.72a586ba.chunk.js"
   },
   {
-    "revision": "45031aca2507688ff770",
-    "url": "/soulcalibur/static/js/main.9abf7da8.chunk.js"
+    "revision": "5e8902f10015d758623964869c7261c9",
+    "url": "/soulcalibur/static/media/seung-mi-na.5e8902f1.png"
   },
   {
     "revision": "2988bfe05d1375b3216c237d4b3cbca1",
@@ -120,11 +128,11 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/open-iconic.93cc7aa6.ttf"
   },
   {
-    "revision": "784107d8245aab155358",
+    "revision": "07c4ec8045af843d86bb",
     "url": "/soulcalibur/static/css/2.3aef36ab.chunk.css"
   },
   {
-    "revision": "86b67f3e163ed659ebcf378f39f86568",
+    "revision": "f2e44e51128d23a215e31e3ded8e9478",
     "url": "/soulcalibur/index.html"
   }
 ];
