@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
+import Card from "react-bootstrap/Card";
 import Paginator from "./Paginator.jsx";
 import SortIcon from "./SortIcon.jsx";
 import Portrait from "./Portrait.jsx";
@@ -52,7 +53,8 @@ class App extends Component {
     columnSort: null,
     sortDescending: null,
     character: "",
-    command: ""
+    command: "",
+    selectedMove: null
   };
 
   fetchMoves = () => {
@@ -66,9 +68,8 @@ class App extends Component {
 
     let args = {
       size: SIZE,
-      page: currentPage - 1,
-    }
-
+      page: currentPage - 1
+    };
 
     if (character) {
       args["character"] = character;
@@ -95,7 +96,9 @@ class App extends Component {
       args["order_by"] = orderBy;
     }
 
-    let url = `https://berserkerscience.herokuapp.com/moves/?${stringify(args)}`;
+    let url = `https://berserkerscience.herokuapp.com/moves/?${stringify(
+      args
+    )}`;
     fetch(url)
       .then(response => response.json())
       .then(
@@ -150,6 +153,10 @@ class App extends Component {
     );
   };
 
+  onSelectRow = command => {
+    this.setState({ selectedMove: command });
+  }
+
   render = () => {
     const {
       error,
@@ -160,7 +167,8 @@ class App extends Component {
       currentPage,
       totalPages,
       columnSort,
-      sortDescending
+      sortDescending,
+      selectedMove,
     } = this.state;
 
     if (error) {
@@ -172,135 +180,165 @@ class App extends Component {
     }
 
     return (
-      <Container fluid>
-        <Row>
-          <Col>
-            <Form.Group>
-              <Form.Label>Filter Character</Form.Label>
-              <Form.Control
-                onChange={this.onFilterCharacter}
-                as="select"
-                value={character}
-              >
-                <option value="">All</option>
-                {CHARACTERS.map(character => (
-                  <option key={character}>{character}</option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group>
-              <Form.Label>Filter Command</Form.Label>
-              <Form.Control
-                onChange={this.onFilterCommand}
-                type="text"
-                placeholder="Example: 5A"
-                value={command}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+      <Fragment>
+        <Container fluid>
+          <Row>
+            <Col>
+              <Form.Group>
+                <Form.Label>Filter Character</Form.Label>
+                <Form.Control
+                  onChange={this.onFilterCharacter}
+                  as="select"
+                  value={character}
+                >
+                  <option value="">All</option>
+                  {CHARACTERS.map(character => (
+                    <option key={character}>{character}</option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group>
+                <Form.Label>Filter Command</Form.Label>
+                <Form.Control
+                  onChange={this.onFilterCommand}
+                  type="text"
+                  placeholder="Example: 5A"
+                  value={command}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
 
-        <Table
-          striped
-          bordered
-          hover
-          size="sm"
-          responsive
-          className="app-table"
-        >
-          <thead>
-            <tr>
-              <th>Character</th>
-              <th>Command</th>
-              <th>Hits</th>
-              <th>Properties</th>
-              <th
-                className="sortable-table-header"
-                onClick={() => this.onSort("impact_frames")}
-              >
-                Impact{" "}
-                <SortIcon
-                  active={columnSort === "impact_frames"}
-                  descending={sortDescending}
-                />
-              </th>
-              <th
-                className="sortable-table-header"
-                onClick={() => this.onSort("block_frames")}
-              >
-                Block{" "}
-                <SortIcon
-                  active={columnSort === "block_frames"}
-                  descending={sortDescending}
-                />
-              </th>
-              <th
-                className="sortable-table-header"
-                onClick={() => this.onSort("hit_frames")}
-              >
-                Hit{" "}
-                <SortIcon
-                  active={columnSort === "hit_frames"}
-                  descending={sortDescending}
-                />
-              </th>
-              <th
-                className="sortable-table-header"
-                onClick={() => this.onSort("counter_frames")}
-              >
-                Counter{" "}
-                <SortIcon
-                  active={columnSort === "counter_frames"}
-                  descending={sortDescending}
-                />
-              </th>
-              <th>Damage</th>
-              <th>Gap</th>
-            </tr>
-          </thead>
-          <tbody>
-            {moves.map(move => (
-              <tr key={move.moveId}>
-                <td>
-                  <Portrait character={move.character} />
-                </td>
-                <td>{move.command}</td>
-                <td>
-                  {move.attackTypes.map(attribute => (
-                    <HitAttribute attribute={attribute} />
-                  ))}
-                </td>
-                <td>
-                  {move.moveProperties.map(property => (
-                    <MoveProperty property={property} />
-                  ))}
-                </td>
-                <td>{move.impactFrames}</td>
-                <Frames frames={move.blockFrames} />
-                <Frames frames={move.hitFrames} property={move.hitProperty} />
-                <Frames
-                  frames={move.counterFrames}
-                  property={move.counterProperty}
-                />
-                <td>{move.damage.join(", ")}</td>
-                <td>{move.gapFrames.join(", ")}</td>
+          <Table
+            striped
+            bordered
+            hover
+            size="sm"
+            responsive
+            className="app-table"
+          >
+            <thead>
+              <tr>
+                <th>Character</th>
+                <th>Command</th>
+                <th>Hits</th>
+                <th>Properties</th>
+                <th
+                  className="sortable-table-header"
+                  onClick={() => this.onSort("impact_frames")}
+                >
+                  Impact{" "}
+                  <SortIcon
+                    active={columnSort === "impact_frames"}
+                    descending={sortDescending}
+                  />
+                </th>
+                <th
+                  className="sortable-table-header"
+                  onClick={() => this.onSort("block_frames")}
+                >
+                  Block{" "}
+                  <SortIcon
+                    active={columnSort === "block_frames"}
+                    descending={sortDescending}
+                  />
+                </th>
+                <th
+                  className="sortable-table-header"
+                  onClick={() => this.onSort("hit_frames")}
+                >
+                  Hit{" "}
+                  <SortIcon
+                    active={columnSort === "hit_frames"}
+                    descending={sortDescending}
+                  />
+                </th>
+                <th
+                  className="sortable-table-header"
+                  onClick={() => this.onSort("counter_frames")}
+                >
+                  Counter{" "}
+                  <SortIcon
+                    active={columnSort === "counter_frames"}
+                    descending={sortDescending}
+                  />
+                </th>
+                <th>Damage</th>
+                <th>Gap</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
-        {totalPages > 1 && (
-          <div className="text-xs-center">
-            <Paginator
-              hidePreviousAndNextPageLinks
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onChange={this.onPageChange}
-            />
-          </div>
-        )}
-      </Container>
+            </thead>
+            <tbody>
+              {moves.map(move => (
+                <tr key={move.moveId} onClick={() => this.onSelectRow(move)}>
+                  <td>
+                    <Portrait character={move.character} />
+                  </td>
+                  <td>{move.command}</td>
+                  <td>
+                    {move.attackTypes.map(attribute => (
+                      <HitAttribute attribute={attribute} />
+                    ))}
+                  </td>
+                  <td>
+                    {move.moveProperties.map(property => (
+                      <MoveProperty property={property} />
+                    ))}
+                  </td>
+                  <td>{move.impactFrames}</td>
+                  <Frames frames={move.blockFrames} />
+                  <Frames frames={move.hitFrames} property={move.hitProperty} />
+                  <Frames
+                    frames={move.counterFrames}
+                    property={move.counterProperty}
+                  />
+                  <td>{move.damage.join(", ")}</td>
+                  <td>{move.gapFrames.join(", ")}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+          {totalPages > 1 && (
+            <div className="text-xs-center">
+              <Paginator
+                hidePreviousAndNextPageLinks
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onChange={this.onPageChange}
+              />
+            </div>
+          )}
+        </Container>
+        {selectedMove != null &&
+        <div className="app-sub-panel">
+          <Card>
+            <Card.Header>{selectedMove.command}</Card.Header>
+            <Card.Body>
+              <Table
+              striped
+              bordered
+              hover
+              size="sm"
+              responsive
+              className="app-table"
+            >
+              <tbody>
+                {selectedMove.combos.map(combo => (
+                  <tr>
+                  <td>{combo.commands}</td>
+                  <td>{combo.damage}</td>
+                  <td>{combo.condition}</td>
+                  <td>{combo.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+            </Card.Body>
+          </Card>
+        </div>
+        }
+      </Fragment>
     );
   };
 }
