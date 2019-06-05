@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
+import Badge from "react-bootstrap/Badge";
 import Paginator from "./Paginator.jsx";
 import SortIcon from "./SortIcon.jsx";
 import Portrait from "./Portrait.jsx";
@@ -267,6 +268,7 @@ class App extends Component {
                 </th>
                 <th>Damage</th>
                 <th>Gap</th>
+                <th>Combos</th>
               </tr>
             </thead>
             <tbody>
@@ -295,6 +297,17 @@ class App extends Component {
                   />
                   <td>{move.damage.join(", ")}</td>
                   <td>{move.gapFrames.join(", ")}</td>
+                  <td>
+                    {move.combos.filter(combo => combo.condition === "NC").length !== 0 &&
+                      <Badge className="mr-1" variant="primary">{move.combos.filter(combo => combo.condition === "NC").length} NC</Badge>
+                    }
+                    {move.combos.filter(combo => combo.condition === "NCC").length !== 0 &&
+                    <Badge className="mr-1" variant="danger">{move.combos.filter(combo => combo.condition === "NCC").length} NCC</Badge>
+                    }
+                    {move.combos.filter(combo => combo.condition === "LH").length !== 0 &&
+                    <Badge variant="warning">{move.combos.filter(combo => combo.condition === "LH").length} LH</Badge>
+                    }
+                  </td>
                 </tr>
               ))}
             </tbody>
