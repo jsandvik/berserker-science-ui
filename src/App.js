@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
 import Paginator from "./Paginator.jsx";
 import SortIcon from "./SortIcon.jsx";
 import Portrait from "./Portrait.jsx";
@@ -158,6 +159,10 @@ class App extends Component {
     this.setState({ selectedMove: command });
   };
 
+  onCloseSubpanel = () => {
+    this.setState({ selectedMove: null });
+  }
+
   render = () => {
     const {
       error,
@@ -298,15 +303,36 @@ class App extends Component {
                   <td>{move.damage.join(", ")}</td>
                   <td>{move.gapFrames.join(", ")}</td>
                   <td>
-                    {move.combos.filter(combo => combo.condition === "NC").length !== 0 &&
-                      <Badge className="mr-1" variant="primary">{move.combos.filter(combo => combo.condition === "NC").length} NC</Badge>
-                    }
-                    {move.combos.filter(combo => combo.condition === "NCC").length !== 0 &&
-                    <Badge className="mr-1" variant="danger">{move.combos.filter(combo => combo.condition === "NCC").length} NCC</Badge>
-                    }
-                    {move.combos.filter(combo => combo.condition === "LH").length !== 0 &&
-                    <Badge variant="warning">{move.combos.filter(combo => combo.condition === "LH").length} LH</Badge>
-                    }
+                    {move.combos.filter(combo => combo.condition === "NC")
+                      .length !== 0 && (
+                      <Badge className="mr-1" variant="primary">
+                        {
+                          move.combos.filter(combo => combo.condition === "NC")
+                            .length
+                        }{" "}
+                        NC
+                      </Badge>
+                    )}
+                    {move.combos.filter(combo => combo.condition === "NCC")
+                      .length !== 0 && (
+                      <Badge className="mr-1" variant="danger">
+                        {
+                          move.combos.filter(combo => combo.condition === "NCC")
+                            .length
+                        }{" "}
+                        NCC
+                      </Badge>
+                    )}
+                    {move.combos.filter(combo => combo.condition === "LH")
+                      .length !== 0 && (
+                      <Badge variant="warning">
+                        {
+                          move.combos.filter(combo => combo.condition === "LH")
+                            .length
+                        }{" "}
+                        LH
+                      </Badge>
+                    )}
                   </td>
                 </tr>
               ))}
@@ -326,8 +352,17 @@ class App extends Component {
         {selectedMove != null && (
           <div className="app-sub-panel">
             <Card>
-              <Card.Header style={{ padding: "0.3em" }}>
+              <Card.Header style={{ padding: "0.5em" }}>
                 {selectedMove.character} - {selectedMove.command}
+                <span
+                  className="float-right"
+                  title="sort descending"
+                  aria-hidden="true"
+                >
+                  <Button variant="danger" size="sm" onClick={this.onCloseSubpanel}>
+                    <span className="oi oi-x"></span>
+                  </Button>
+                </span>
               </Card.Header>
               <Card.Body>
                 <Table
@@ -342,47 +377,39 @@ class App extends Component {
                     <tr>
                       <th>Hits</th>
                       <th>Properties</th>
-                      <th>
-                        Impact{" "}
-                      </th>
-                      <th>
-                        Block{" "}
-                      </th>
-                      <th>
-                        Hit{" "}
-                      </th>
-                      <th>
-                        Counter{" "}
-                      </th>
+                      <th>Impact </th>
+                      <th>Block </th>
+                      <th>Hit </th>
+                      <th>Counter </th>
                       <th>Damage</th>
                       <th>Gap</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                        <td>
-                          {selectedMove.attackTypes.map(attribute => (
-                            <HitAttribute attribute={attribute} />
-                          ))}
-                        </td>
-                        <td>
-                          {selectedMove.moveProperties.map(property => (
-                            <MoveProperty property={property} />
-                          ))}
-                        </td>
-                        <td>{selectedMove.impactFrames}</td>
-                        <Frames frames={selectedMove.blockFrames} />
-                        <Frames
-                          frames={selectedMove.hitFrames}
-                          property={selectedMove.hitProperty}
-                        />
-                        <Frames
-                          frames={selectedMove.counterFrames}
-                          property={selectedMove.counterProperty}
-                        />
-                        <td>{selectedMove.damage.join(", ")}</td>
-                        <td>{selectedMove.gapFrames.join(", ")}</td>
-                      </tr>
+                    <tr>
+                      <td>
+                        {selectedMove.attackTypes.map(attribute => (
+                          <HitAttribute attribute={attribute} />
+                        ))}
+                      </td>
+                      <td>
+                        {selectedMove.moveProperties.map(property => (
+                          <MoveProperty property={property} />
+                        ))}
+                      </td>
+                      <td>{selectedMove.impactFrames}</td>
+                      <Frames frames={selectedMove.blockFrames} />
+                      <Frames
+                        frames={selectedMove.hitFrames}
+                        property={selectedMove.hitProperty}
+                      />
+                      <Frames
+                        frames={selectedMove.counterFrames}
+                        property={selectedMove.counterProperty}
+                      />
+                      <td>{selectedMove.damage.join(", ")}</td>
+                      <td>{selectedMove.gapFrames.join(", ")}</td>
+                    </tr>
                   </tbody>
                 </Table>
               </Card.Body>
