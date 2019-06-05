@@ -155,7 +155,7 @@ class App extends Component {
 
   onSelectRow = command => {
     this.setState({ selectedMove: command });
-  }
+  };
 
   render = () => {
     const {
@@ -168,7 +168,7 @@ class App extends Component {
       totalPages,
       columnSort,
       sortDescending,
-      selectedMove,
+      selectedMove
     } = this.state;
 
     if (error) {
@@ -310,34 +310,127 @@ class App extends Component {
             </div>
           )}
         </Container>
-        {selectedMove != null &&
-        <div className="app-sub-panel">
-          <Card>
-            <Card.Header>{selectedMove.command}</Card.Header>
-            <Card.Body>
-              <Table
-              striped
-              bordered
-              hover
-              size="sm"
-              responsive
-              className="app-table"
-            >
-              <tbody>
-                {selectedMove.combos.map(combo => (
+        {selectedMove != null && (
+          <div className="app-sub-panel">
+            <Card>
+              <Card.Header style={{ padding: "0.3em" }}>
+                {selectedMove.character} - {selectedMove.command}
+              </Card.Header>
+              <Card.Body>
+                <Table
+                  striped
+                  bordered
+                  hover
+                  size="sm"
+                  responsive
+                  className="app-table"
+                >
+                  <thead>
+                    <tr>
+                      <th>Hits</th>
+                      <th>Properties</th>
+                      <th
+                        className="sortable-table-header"
+                        onClick={() => this.onSort("impact_frames")}
+                      >
+                        Impact{" "}
+                        <SortIcon
+                          active={columnSort === "impact_frames"}
+                          descending={sortDescending}
+                        />
+                      </th>
+                      <th
+                        className="sortable-table-header"
+                        onClick={() => this.onSort("block_frames")}
+                      >
+                        Block{" "}
+                        <SortIcon
+                          active={columnSort === "block_frames"}
+                          descending={sortDescending}
+                        />
+                      </th>
+                      <th
+                        className="sortable-table-header"
+                        onClick={() => this.onSort("hit_frames")}
+                      >
+                        Hit{" "}
+                        <SortIcon
+                          active={columnSort === "hit_frames"}
+                          descending={sortDescending}
+                        />
+                      </th>
+                      <th
+                        className="sortable-table-header"
+                        onClick={() => this.onSort("counter_frames")}
+                      >
+                        Counter{" "}
+                        <SortIcon
+                          active={columnSort === "counter_frames"}
+                          descending={sortDescending}
+                        />
+                      </th>
+                      <th>Damage</th>
+                      <th>Gap</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                   <tr>
-                  <td>{combo.commands}</td>
-                  <td>{combo.damage}</td>
-                  <td>{combo.condition}</td>
-                  <td>{combo.notes}</td>
+                        <td>
+                          {selectedMove.attackTypes.map(attribute => (
+                            <HitAttribute attribute={attribute} />
+                          ))}
+                        </td>
+                        <td>
+                          {selectedMove.moveProperties.map(property => (
+                            <MoveProperty property={property} />
+                          ))}
+                        </td>
+                        <td>{selectedMove.impactFrames}</td>
+                        <Frames frames={selectedMove.blockFrames} />
+                        <Frames
+                          frames={selectedMove.hitFrames}
+                          property={selectedMove.hitProperty}
+                        />
+                        <Frames
+                          frames={selectedMove.counterFrames}
+                          property={selectedMove.counterProperty}
+                        />
+                        <td>{selectedMove.damage.join(", ")}</td>
+                        <td>{selectedMove.gapFrames.join(", ")}</td>
+                      </tr>
+                  </tbody>
+                </Table>
+              </Card.Body>
+
+              <Table
+                striped
+                bordered
+                size="sm"
+                responsive
+                className="app-table"
+              >
+                <thead>
+                  <tr>
+                    <th>Combos</th>
+                    <th>Damage</th>
+                    <th>Condition</th>
+                    <th>Notes</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
-            </Card.Body>
-          </Card>
-        </div>
-        }
+                </thead>
+                <tbody>
+                  {selectedMove.combos.map(combo => (
+                    <tr>
+                      <td>{combo.commands}</td>
+                      <td>{combo.damage}</td>
+                      <td>{combo.condition}</td>
+                      <td>{combo.notes}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </Card>
+          </div>
+        )}
       </Fragment>
     );
   };
