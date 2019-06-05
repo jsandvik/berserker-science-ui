@@ -342,45 +342,17 @@ class App extends Component {
                     <tr>
                       <th>Hits</th>
                       <th>Properties</th>
-                      <th
-                        className="sortable-table-header"
-                        onClick={() => this.onSort("impact_frames")}
-                      >
+                      <th>
                         Impact{" "}
-                        <SortIcon
-                          active={columnSort === "impact_frames"}
-                          descending={sortDescending}
-                        />
                       </th>
-                      <th
-                        className="sortable-table-header"
-                        onClick={() => this.onSort("block_frames")}
-                      >
+                      <th>
                         Block{" "}
-                        <SortIcon
-                          active={columnSort === "block_frames"}
-                          descending={sortDescending}
-                        />
                       </th>
-                      <th
-                        className="sortable-table-header"
-                        onClick={() => this.onSort("hit_frames")}
-                      >
+                      <th>
                         Hit{" "}
-                        <SortIcon
-                          active={columnSort === "hit_frames"}
-                          descending={sortDescending}
-                        />
                       </th>
-                      <th
-                        className="sortable-table-header"
-                        onClick={() => this.onSort("counter_frames")}
-                      >
+                      <th>
                         Counter{" "}
-                        <SortIcon
-                          active={columnSort === "counter_frames"}
-                          descending={sortDescending}
-                        />
                       </th>
                       <th>Damage</th>
                       <th>Gap</th>
