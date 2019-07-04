@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -57,26 +58,14 @@ class CharacterPage extends Component {
   };
 
   fetchMoves = () => {
-    const {
-      currentPage,
-      command,
-      columnSort,
-      sortDescending
-    } = this.state;
+    const { currentPage, command, columnSort, sortDescending } = this.state;
 
-    const {match} = this.props;
+    const { match } = this.props;
 
     let args = {
-      size: SIZE,
-      page: currentPage - 1
+      character: "Azwel"
     };
 
-    
-    args["character"] = match.params.character;
-
-    if (command) {
-      args["command"] = command;
-    }
 
     if (columnSort) {
       const orderBy = [];
@@ -102,10 +91,15 @@ class CharacterPage extends Component {
       .then(response => response.json())
       .then(
         results => {
+          const categories = results.moves
+            .map(move => move.category)
+            .filter(
+              (value, index, self) => self.indexOf(value) === index
+            );
           this.setState({
             loading: false,
             moves: results.moves,
-            totalPages: results.numPages
+            categories
           });
         },
         error => {
@@ -142,12 +136,13 @@ class CharacterPage extends Component {
 
   onCloseSubpanel = () => {
     this.setState({ selectedMove: null });
-  }
+  };
 
   render = () => {
     const {
       error,
       loading,
+      categories,
       moves,
       character,
       command,
@@ -157,7 +152,7 @@ class CharacterPage extends Component {
       sortDescending,
       selectedMove
     } = this.state;
-    const {match} = this.props;
+    const { match } = this.props;
 
     if (error) {
       return <div>Error loading: {error.message}</div>;
@@ -168,7 +163,15 @@ class CharacterPage extends Component {
     }
 
     return (
-        <p>{match.params.character}</p>
+      <Container fluid>
+        <Nav variant="tabs" defaultActiveKey="/home">
+          {categories.map(category => (
+            <Nav.Item>
+              <Nav.Link eventKey="link-1">{category}</Nav.Link>
+            </Nav.Item>
+          ))}
+        </Nav>
+      </Container>
     );
   };
 }
