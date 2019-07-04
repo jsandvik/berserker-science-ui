@@ -1,19 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Table from "react-bootstrap/Table";
-import Card from "react-bootstrap/Card";
-import Badge from "react-bootstrap/Badge";
-import Button from "react-bootstrap/Button";
-import Paginator from "./Paginator.jsx";
-import SortIcon from "./SortIcon.jsx";
-import Portrait from "./Portrait.jsx";
-import HitAttribute from "./HitAttribute.jsx";
-import MoveProperty from "./MoveProperty.jsx";
-import Frames from "./Frames.jsx";
+import MoveTable from "./MoveTable.jsx";
 import { stringify } from "querystring";
 
 const SIZE = 100;
@@ -171,6 +159,7 @@ class CharacterPage extends Component {
             </Nav.Item>
           ))}
         </Nav>
+        <MoveTable moves={moves} />
       </Container>
     );
   };
