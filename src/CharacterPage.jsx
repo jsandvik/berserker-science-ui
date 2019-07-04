@@ -38,22 +38,67 @@ class CharacterPage extends Component {
     totalPages: null,
     currentPage: 1,
     moves: [],
+    categories: [],
     columnSort: null,
     sortDescending: null,
     character: "",
     command: "",
-    selectedMove: null
+    selectedMove: null,
+    category: "Horizontals",
   };
 
-  fetchMoves = () => {
-    const { currentPage, command, columnSort, sortDescending } = this.state;
+  onChangeCategory = (category) => {
+    this.setState(
+      { category: category },
+      this.fetchMoves
+    );
+  }
 
-    const { match } = this.props;
+  fetchCategories = () => {
+    const {
+      match: {
+        params: { character }
+      }
+    } = this.props;
 
     let args = {
-      character: "Azwel"
+      character
     };
 
+    let url = `https://berserkerscience.herokuapp.com/categories/?${stringify(
+      args
+    )}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(
+        results => {
+          this.setState({
+            loading: false,
+            categories: results.categories
+          });
+        },
+        error => {
+          this.setState({ loading: false, error });
+        }
+      );
+  }
+
+  fetchMoves = () => {
+    const { currentPage, command, columnSort, sortDescending, category } = this.state;
+
+    const {
+      match: {
+        params: { character }
+      }
+    } = this.props;
+
+    let args = {
+      character
+    };
+
+    if (category) {
+      args["category"] = category;
+    }
 
     if (columnSort) {
       const orderBy = [];
@@ -79,15 +124,9 @@ class CharacterPage extends Component {
       .then(response => response.json())
       .then(
         results => {
-          const categories = results.moves
-            .map(move => move.category)
-            .filter(
-              (value, index, self) => self.indexOf(value) === index
-            );
           this.setState({
             loading: false,
             moves: results.moves,
-            categories
           });
         },
         error => {
@@ -97,6 +136,7 @@ class CharacterPage extends Component {
   };
 
   componentDidMount = () => {
+    this.fetchCategories();
     this.fetchMoves();
   };
 
@@ -152,10 +192,10 @@ class CharacterPage extends Component {
 
     return (
       <Container fluid>
-        <Nav variant="tabs" defaultActiveKey="/home">
+        <Nav variant="pills" defaultActiveKey="Horizontals" onSelect={this.onChangeCategory}>
           {categories.map(category => (
             <Nav.Item>
-              <Nav.Link eventKey="link-1">{category}</Nav.Link>
+              <Nav.Link eventKey={category}>{category}</Nav.Link>
             </Nav.Item>
           ))}
         </Nav>
