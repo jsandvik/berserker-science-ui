@@ -2,23 +2,23 @@ import React, { Component } from "react";
 
 export default class Frames extends Component {
   render = () => {
-    const {frames, property} = this.props;
+    const {frames, property, className} = this.props;
 
-    let className;
+    let colorClass;
     if (frames == null) {
-        className = null;
+        colorClass = null;
     } else if (frames >= 4) {
-        className = "plus-high";
+        colorClass = "plus-high";
     } else if (frames >= 2) {
-        className = "plus-medium";
+        colorClass = "plus-medium";
     } else if (frames >= 0) {
-        className = "plus-low";
+        colorClass = "plus-low";
     } else if (frames >= -9) {
-        className = "minus-low";
+        colorClass = "minus-low";
     } else if (frames >= -17) {
-        className = "minus-medium";
+        colorClass = "minus-medium";
     } else if (frames < -17) {
-        className = "minus-high";
+        colorClass = "minus-high";
     }
 
     // make a plus show up when positive
@@ -27,6 +27,6 @@ export default class Frames extends Component {
     // show property as text if exists
     const displayText = property ? property : frames;
 
-    return <td className={className}>{plus}{displayText}</td>;
+    return <td className={`${colorClass} ${className}`}>{plus}{displayText}</td>;
   };
 }

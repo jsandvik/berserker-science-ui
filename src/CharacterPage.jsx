@@ -172,15 +172,7 @@ class CharacterPage extends Component {
       loading,
       categories,
       moves,
-      character,
-      command,
-      currentPage,
-      totalPages,
-      columnSort,
-      sortDescending,
-      selectedMove
     } = this.state;
-    const { match } = this.props;
 
     if (error) {
       return <div>Error loading: {error.message}</div>;
@@ -199,7 +191,7 @@ class CharacterPage extends Component {
             </Nav.Item>
           ))}
         </Nav>
-        <MoveTable moves={moves} />
+        <MoveTable moves={moves} hiddenColumns={["character"]} />
       </Container>
     );
   };
