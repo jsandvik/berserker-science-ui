@@ -9,7 +9,7 @@ import Frames from "./Frames.jsx";
 
 export default class MoveTable extends Component {
   render = () => {
-    const {moves, columnSort, sortDescending} = this.props;
+    const {moves, columnSort, sortDescending, onSelect} = this.props;
 
     return (
       <Table striped bordered hover size="sm" responsive className="app-table">
@@ -66,7 +66,7 @@ export default class MoveTable extends Component {
         </thead>
         <tbody>
           {moves.map(move => (
-            <tr key={move.moveId} onClick={() => this.onSelectRow(move)}>
+            <tr key={move.moveId} onClick={() => onSelect(move)}>
               <td>
                 <Portrait character={move.character} />
               </td>
