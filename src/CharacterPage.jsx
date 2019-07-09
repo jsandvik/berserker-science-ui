@@ -144,7 +144,7 @@ class CharacterPage extends Component {
     this.setState({ currentPage: page }, this.fetchMoves);
   };
 
-  onSort = attribute => {
+  handleSort = attribute => {
     const { columnSort, sortDescending } = this.state;
 
     // default, descending == false. if selected before toggle descending
@@ -172,6 +172,8 @@ class CharacterPage extends Component {
       loading,
       categories,
       moves,
+      sortDescending,
+      columnSort,
     } = this.state;
 
     if (error) {
@@ -191,7 +193,7 @@ class CharacterPage extends Component {
             </Nav.Item>
           ))}
         </Nav>
-        <MoveTable moves={moves} hiddenColumns={["character"]} />
+        <MoveTable moves={moves} columnSort={columnSort} sortDescending={sortDescending} hiddenColumns={["character"]} onSort={this.handleSort} />
       </Container>
     );
   };

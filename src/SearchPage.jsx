@@ -136,7 +136,7 @@ class SearchPage extends Component {
     this.setState({ currentPage: page }, this.fetchMoves);
   };
 
-  onSort = attribute => {
+  handleSort = attribute => {
     const { columnSort, sortDescending } = this.state;
 
     // default, descending == false. if selected before toggle descending
@@ -211,7 +211,7 @@ class SearchPage extends Component {
               </Form.Group>
             </Col>
           </Row>
-          <MoveTable moves={moves} columnSort={columnSort} sortDescending={sortDescending} onSelect={this.onSelectRow}/>
+          <MoveTable moves={moves} columnSort={columnSort} sortDescending={sortDescending} onSelect={this.onSelectRow} onSort={this.handleSort}/>
           {totalPages > 1 && (
             <div className="text-xs-center">
               <Paginator

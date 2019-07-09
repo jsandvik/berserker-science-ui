@@ -11,7 +11,8 @@ import Frames from "./Frames.jsx";
 export default class MoveTable extends Component {
   static propTypes = {
     moves: PropTypes.arrayOf(PropTypes.object).isRequired,
-    hiddenColumns: PropTypes.arrayOf(PropTypes.object)
+    hiddenColumns: PropTypes.arrayOf(PropTypes.object),
+    onSort: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -25,7 +26,7 @@ export default class MoveTable extends Component {
   };
 
   render = () => {
-    const { moves, columnSort, sortDescending, onSelect } = this.props;
+    const { moves, columnSort, sortDescending, onSelect, onSort } = this.props;
 
     return (
       <Table striped bordered hover size="sm" responsive className="app-table">
@@ -41,7 +42,7 @@ export default class MoveTable extends Component {
               className={`${this.getVisibilityClass(
                 "impact_frames"
               )} sortable-table-header`}
-              onClick={() => this.onSort("impact_frames")}
+              onClick={() => onSort("impact_frames")}
             >
               Impact{" "}
               <SortIcon
@@ -53,7 +54,7 @@ export default class MoveTable extends Component {
               className={`${this.getVisibilityClass(
                 "block_frames"
               )} sortable-table-header`}
-              onClick={() => this.onSort("block_frames")}
+              onClick={() => onSort("block_frames")}
             >
               Block{" "}
               <SortIcon
@@ -65,7 +66,7 @@ export default class MoveTable extends Component {
               className={`${this.getVisibilityClass(
                 "hit_frames"
               )} sortable-table-header`}
-              onClick={() => this.onSort("hit_frames")}
+              onClick={() => onSort("hit_frames")}
             >
               Hit{" "}
               <SortIcon
@@ -77,7 +78,7 @@ export default class MoveTable extends Component {
               className={`${this.getVisibilityClass(
                 "counter_frames"
               )} sortable-table-header`}
-              onClick={() => this.onSort("counter_frames")}
+              onClick={() => onSort("counter_frames")}
             >
               Counter{" "}
               <SortIcon
