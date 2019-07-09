@@ -3,14 +3,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Table from "react-bootstrap/Table";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Paginator from "./Paginator.jsx";
-import HitAttribute from "./HitAttribute.jsx";
-import MoveProperty from "./MoveProperty.jsx";
-import Frames from "./Frames.jsx";
 import MoveTable from "./MoveTable.jsx";
+import MovePanel from "./MovePanel.jsx";
 import { stringify } from "querystring";
 
 const SIZE = 100;
@@ -150,13 +145,13 @@ class SearchPage extends Component {
     );
   };
 
-  onSelectRow = command => {
+  handleSelectRow = command => {
     this.setState({ selectedMove: command });
   };
 
-  onCloseSubpanel = () => {
+  handleCloseSubpanel = () => {
     this.setState({ selectedMove: null });
-  }
+  };
 
   render = () => {
     const {
@@ -211,7 +206,13 @@ class SearchPage extends Component {
               </Form.Group>
             </Col>
           </Row>
-          <MoveTable moves={moves} columnSort={columnSort} sortDescending={sortDescending} onSelect={this.onSelectRow} onSort={this.handleSort}/>
+          <MoveTable
+            moves={moves}
+            columnSort={columnSort}
+            sortDescending={sortDescending}
+            onSelect={this.handleSelectRow}
+            onSort={this.handleSort}
+          />
           {totalPages > 1 && (
             <div className="text-xs-center">
               <Paginator
@@ -224,98 +225,7 @@ class SearchPage extends Component {
           )}
         </Container>
         {selectedMove != null && (
-          <div className="app-sub-panel">
-            <Card>
-              <Card.Header style={{ padding: "0.5em" }}>
-                {selectedMove.character} - {selectedMove.command}
-                <span
-                  className="float-right"
-                  title="sort descending"
-                  aria-hidden="true"
-                >
-                  <Button variant="danger" size="sm" onClick={this.onCloseSubpanel}>
-                    <span className="oi oi-x"></span>
-                  </Button>
-                </span>
-              </Card.Header>
-              <Card.Body>
-                <Table
-                  striped
-                  bordered
-                  hover
-                  size="sm"
-                  responsive
-                  className="app-table"
-                >
-                  <thead>
-                    <tr>
-                      <th>Hits</th>
-                      <th>Properties</th>
-                      <th>Impact </th>
-                      <th>Block </th>
-                      <th>Hit </th>
-                      <th>Counter </th>
-                      <th>Damage</th>
-                      <th>Gap</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        {selectedMove.attackTypes.map(attribute => (
-                          <HitAttribute attribute={attribute} />
-                        ))}
-                      </td>
-                      <td>
-                        {selectedMove.moveProperties.map(property => (
-                          <MoveProperty property={property} />
-                        ))}
-                      </td>
-                      <td>{selectedMove.impactFrames}</td>
-                      <Frames frames={selectedMove.blockFrames} />
-                      <Frames
-                        frames={selectedMove.hitFrames}
-                        property={selectedMove.hitProperty}
-                      />
-                      <Frames
-                        frames={selectedMove.counterFrames}
-                        property={selectedMove.counterProperty}
-                      />
-                      <td>{selectedMove.damage.join(", ")}</td>
-                      <td>{selectedMove.gapFrames.join(", ")}</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Card.Body>
-
-              <Table
-                striped
-                bordered
-                size="sm"
-                responsive
-                className="app-table"
-              >
-                <thead>
-                  <tr>
-                    <th>Combos</th>
-                    <th>Damage</th>
-                    <th>Condition</th>
-                    <th>Notes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {selectedMove.combos.map(combo => (
-                    <tr>
-                      <td>{combo.commands}</td>
-                      <td>{combo.damage}</td>
-                      <td>{combo.condition}</td>
-                      <td>{combo.notes}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </Card>
-          </div>
+          <MovePanel move={selectedMove} onClose={this.handleCloseSubpanel} />
         )}
       </Fragment>
     );

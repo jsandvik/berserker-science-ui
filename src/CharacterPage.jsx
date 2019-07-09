@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import MoveTable from "./MoveTable.jsx";
+import MovePanel from "./MovePanel.jsx";
 import { stringify } from "querystring";
 
 const SIZE = 100;
@@ -44,15 +45,12 @@ class CharacterPage extends Component {
     character: "",
     command: "",
     selectedMove: null,
-    category: "Horizontals",
+    category: "Horizontals"
   };
 
-  onChangeCategory = (category) => {
-    this.setState(
-      { category: category },
-      this.fetchMoves
-    );
-  }
+  onChangeCategory = category => {
+    this.setState({ category: category }, this.fetchMoves);
+  };
 
   fetchCategories = () => {
     const {
@@ -81,10 +79,16 @@ class CharacterPage extends Component {
           this.setState({ loading: false, error });
         }
       );
-  }
+  };
 
   fetchMoves = () => {
-    const { currentPage, command, columnSort, sortDescending, category } = this.state;
+    const {
+      currentPage,
+      command,
+      columnSort,
+      sortDescending,
+      category
+    } = this.state;
 
     const {
       match: {
@@ -126,7 +130,7 @@ class CharacterPage extends Component {
         results => {
           this.setState({
             loading: false,
-            moves: results.moves,
+            moves: results.moves
           });
         },
         error => {
@@ -158,11 +162,11 @@ class CharacterPage extends Component {
     );
   };
 
-  onSelectRow = command => {
+  handleMoveSelect = command => {
     this.setState({ selectedMove: command });
   };
 
-  onCloseSubpanel = () => {
+  handleCloseSubpanel = () => {
     this.setState({ selectedMove: null });
   };
 
@@ -174,6 +178,7 @@ class CharacterPage extends Component {
       moves,
       sortDescending,
       columnSort,
+      selectedMove
     } = this.state;
 
     if (error) {
@@ -185,16 +190,30 @@ class CharacterPage extends Component {
     }
 
     return (
-      <Container fluid>
-        <Nav variant="pills" defaultActiveKey="Horizontals" onSelect={this.onChangeCategory}>
-          {categories.map(category => (
-            <Nav.Item>
-              <Nav.Link eventKey={category}>{category}</Nav.Link>
-            </Nav.Item>
-          ))}
-        </Nav>
-        <MoveTable moves={moves} columnSort={columnSort} sortDescending={sortDescending} hiddenColumns={["character"]} onSort={this.handleSort} />
-      </Container>
+      <Fragment>
+        <Container fluid>
+          <Nav
+            variant="pills"
+            defaultActiveKey="Horizontals"
+            onSelect={this.onChangeCategory}
+          >
+            {categories.map(category => (
+              <Nav.Item>
+                <Nav.Link eventKey={category}>{category}</Nav.Link>
+              </Nav.Item>
+            ))}
+          </Nav>
+          <MoveTable
+            moves={moves}
+            columnSort={columnSort}
+            sortDescending={sortDescending}
+            hiddenColumns={["character"]}
+            onSort={this.handleSort}
+            onSelect={this.handleMoveSelect}
+          />
+        </Container>
+        {selectedMove != null && <MovePanel move={selectedMove} onClose={this.handleCloseSubpanel} />}
+      </Fragment>
     );
   };
 }

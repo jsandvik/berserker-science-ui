@@ -13,6 +13,7 @@ export default class MoveTable extends Component {
     moves: PropTypes.arrayOf(PropTypes.object).isRequired,
     hiddenColumns: PropTypes.arrayOf(PropTypes.object),
     onSort: PropTypes.func.isRequired,
+    onSelect: PropTypes.func.isRequired
   };
 
   static defaultProps = {
