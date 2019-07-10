@@ -11,8 +11,8 @@ class App extends Component {
   render = () => {
     return (
       <Router>
-        <Route path="/" exact component={SearchPage} />
-        <Route path="/:character" component={CharacterPage} />
+        <Route path="/soulcalibur/" exact component={SearchPage} />
+        <Route path="/soulcalibur/:character" component={CharacterPage} />
       </Router>
     );
   };
