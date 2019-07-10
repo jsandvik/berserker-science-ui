@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import MoveTable from "./MoveTable.jsx";
 import MovePanel from "./MovePanel.jsx";
+import CharacterIntro from "./CharacterIntro.jsx";
 import { stringify } from "querystring";
 
 const SIZE = 100;
@@ -172,6 +173,12 @@ class CharacterPage extends Component {
 
   render = () => {
     const {
+      match: {
+        params: { character }
+      }
+    } = this.props;
+
+    const {
       error,
       loading,
       categories,
@@ -192,10 +199,12 @@ class CharacterPage extends Component {
     return (
       <Fragment>
         <Container fluid>
+          <CharacterIntro character={character}/>
           <Nav
             variant="pills"
             defaultActiveKey="Horizontals"
             onSelect={this.onChangeCategory}
+            className="mb-2"
           >
             {categories.map(category => (
               <Nav.Item>
@@ -212,7 +221,9 @@ class CharacterPage extends Component {
             onSelect={this.handleMoveSelect}
           />
         </Container>
-        {selectedMove != null && <MovePanel move={selectedMove} onClose={this.handleCloseSubpanel} />}
+        {selectedMove != null && (
+          <MovePanel move={selectedMove} onClose={this.handleCloseSubpanel} />
+        )}
       </Fragment>
     );
   };
