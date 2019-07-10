@@ -4,15 +4,15 @@ import "./custom.scss";
 import "open-iconic/font/css/open-iconic-bootstrap.css";
 import SearchPage from "./SearchPage.jsx";
 import CharacterPage from "./CharacterPage.jsx";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
 
   render = () => {
     return (
-      <Router>
-        <Route path="/soulcalibur/" exact component={SearchPage} />
-        <Route path="/soulcalibur/:character" component={CharacterPage} />
+      <Router basename="/soulcalibur">
+        <Route path="/" exact component={SearchPage} />
+        <Route path="/:character" component={CharacterPage} />
       </Router>
     );
   };
