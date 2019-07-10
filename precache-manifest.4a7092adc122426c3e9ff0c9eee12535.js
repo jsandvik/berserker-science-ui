@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/zasalamel.c881cea9.png"
   },
   {
-    "revision": "08251d7671f227f008a2",
+    "revision": "b120b8de4bd7e67fa063",
     "url": "/soulcalibur/static/css/main.e802a66b.chunk.css"
   },
   {
@@ -108,8 +108,8 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/yoshimitsu.9e103aef.png"
   },
   {
-    "revision": "08251d7671f227f008a2",
-    "url": "/soulcalibur/static/js/main.c67bc788.chunk.js"
+    "revision": "b120b8de4bd7e67fa063",
+    "url": "/soulcalibur/static/js/main.07120cbf.chunk.js"
   },
   {
     "revision": "57778731fb0d5976ca264d901766ddbd",
@@ -216,7 +216,7 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/css/2.3aef36ab.chunk.css"
   },
   {
-    "revision": "49ecd4693ac021810cd330c34ad51b67",
+    "revision": "e8cbc60274860e18e763a22eb1b9cc4f",
     "url": "/soulcalibur/index.html"
   }
 ];
