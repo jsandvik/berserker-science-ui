@@ -13,11 +13,13 @@ export default class MoveTable extends Component {
     moves: PropTypes.arrayOf(PropTypes.object).isRequired,
     hiddenColumns: PropTypes.arrayOf(PropTypes.object),
     onSort: PropTypes.func.isRequired,
-    onSelect: PropTypes.func.isRequired
+    onSelect: PropTypes.func.isRequired,
+    selectedMove: PropTypes.object,
   };
 
   static defaultProps = {
-    hiddenColumns: []
+    hiddenColumns: [],
+    selectedMove: null,
   };
 
   getVisibilityClass = columnName => {
@@ -27,7 +29,8 @@ export default class MoveTable extends Component {
   };
 
   render = () => {
-    const { moves, columnSort, sortDescending, onSelect, onSort } = this.props;
+    const { moves, columnSort, sortDescending, onSelect, onSort, selectedMove } = this.props;
+    console.log(selectedMove);
 
     return (
       <Table striped bordered hover size="sm" responsive className="app-table">
@@ -93,7 +96,7 @@ export default class MoveTable extends Component {
         </thead>
         <tbody>
           {moves.map(move => (
-            <tr key={move.moveId} onClick={() => onSelect(move)}>
+            <tr key={move.moveId} onClick={() => onSelect(move)} className={selectedMove === move && 'bg-info'}>
               <td className={this.getVisibilityClass("character")}>
                 <Portrait character={move.character} />
               </td>

@@ -212,6 +212,7 @@ class SearchPage extends Component {
             sortDescending={sortDescending}
             onSelect={this.handleSelectRow}
             onSort={this.handleSort}
+            selectedMove={selectedMove}
           />
           {totalPages > 1 && (
             <div className="text-xs-center">

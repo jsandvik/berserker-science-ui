@@ -219,6 +219,7 @@ class CharacterPage extends Component {
             hiddenColumns={["character"]}
             onSort={this.handleSort}
             onSelect={this.handleMoveSelect}
+            selectedMove={selectedMove}
           />
         </Container>
         {selectedMove != null && (
