@@ -1,10 +1,15 @@
 import React, { Component, Fragment } from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import MoveTable from "./MoveTable.jsx";
 import MovePanel from "./MovePanel.jsx";
-import CharacterIntro from "./CharacterIntro.jsx";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Drawer from "@material-ui/core/Drawer";
 import { stringify } from "querystring";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const SIZE = 100;
 const CHARACTERS = [
@@ -46,11 +51,11 @@ class CharacterPage extends Component {
     character: "",
     command: "",
     selectedMove: null,
-    category: "Horizontals"
+    categoryIndex: 0
   };
 
-  onChangeCategory = category => {
-    this.setState({ category: category }, this.fetchMoves);
+  onChangeCategory = (event, categoryIndex) => {
+    this.setState({ categoryIndex: categoryIndex }, this.fetchMoves);
   };
 
   fetchCategories = () => {
@@ -88,7 +93,8 @@ class CharacterPage extends Component {
       command,
       columnSort,
       sortDescending,
-      category
+      categoryIndex,
+      categories
     } = this.state;
 
     const {
@@ -101,8 +107,11 @@ class CharacterPage extends Component {
       character
     };
 
+    const category = categories[categoryIndex];
     if (category) {
       args["category"] = category;
+    } else {
+      args["category"] = "Horizontals";
     }
 
     if (columnSort) {
@@ -182,6 +191,7 @@ class CharacterPage extends Component {
       error,
       loading,
       categories,
+      categoryIndex,
       moves,
       sortDescending,
       columnSort,
@@ -198,33 +208,41 @@ class CharacterPage extends Component {
 
     return (
       <Fragment>
-        <Container fluid>
-          <CharacterIntro character={character}/>
-          <Nav
-            variant="pills"
-            defaultActiveKey="Horizontals"
-            onSelect={this.onChangeCategory}
-            className="mb-2"
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton edge="start" color="inherit" aria-label="Menu">
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6">Berserker Science</Typography>
+          </Toolbar>
+        </AppBar>
+        <AppBar position="static">
+          <Tabs
+            value={categoryIndex}
+            onChange={this.onChangeCategory}
+            variant="scrollable"
           >
             {categories.map(category => (
-              <Nav.Item>
-                <Nav.Link eventKey={category}>{category}</Nav.Link>
-              </Nav.Item>
+              <Tab label={category} />
             ))}
-          </Nav>
-          <MoveTable
-            moves={moves}
-            columnSort={columnSort}
-            sortDescending={sortDescending}
-            hiddenColumns={["character"]}
-            onSort={this.handleSort}
-            onSelect={this.handleMoveSelect}
-            selectedMove={selectedMove}
-          />
-        </Container>
-        {selectedMove != null && (
-          <MovePanel move={selectedMove} onClose={this.handleCloseSubpanel} />
-        )}
+          </Tabs>
+        </AppBar>
+        <MoveTable
+          moves={moves}
+          columnSort={columnSort}
+          sortDescending={sortDescending}
+          hiddenColumns={["character"]}
+          onSort={this.handleSort}
+          onSelect={this.handleMoveSelect}
+          selectedMove={selectedMove}
+        />
+        <Drawer
+          anchor="bottom"
+          open={selectedMove !== null}
+          onClose={this.handleCloseSubpanel}
+        >
+          <MovePanel move={selectedMove} />
+        </Drawer>
       </Fragment>
     );
   };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import "./custom.scss";
+import 'typeface-roboto';
 import "open-iconic/font/css/open-iconic-bootstrap.css";
 import SearchPage from "./SearchPage.jsx";
 import CharacterPage from "./CharacterPage.jsx";

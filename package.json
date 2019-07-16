@@ -4,6 +4,8 @@
   "homepage": "https://jsandvik.github.io/soulcalibur",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.2.0",
+    "@material-ui/icons": "^4.2.1",
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.0.1",
     "node-sass": "^4.11.0",
@@ -14,7 +16,8 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "2.1.8",
-    "react-ultimate-pagination": "^1.2.0"
+    "react-ultimate-pagination": "^1.2.0",
+    "typeface-roboto": "0.0.54"
   },
   "scripts": {
     "predeploy": "npm run build",
