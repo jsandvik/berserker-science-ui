@@ -7,6 +7,7 @@ import Paginator from "./Paginator.jsx";
 import MoveTable from "./MoveTable.jsx";
 import MovePanel from "./MovePanel.jsx";
 import { stringify } from "querystring";
+import Drawer from "@material-ui/core/Drawer";
 
 const SIZE = 100;
 const CHARACTERS = [
@@ -225,9 +226,13 @@ class SearchPage extends Component {
             </div>
           )}
         </Container>
-        {selectedMove != null && (
-          <MovePanel move={selectedMove} onClose={this.handleCloseSubpanel} />
-        )}
+        <Drawer
+          anchor="bottom"
+          open={selectedMove !== null}
+          onClose={this.handleCloseSubpanel}
+        >
+         <MovePanel move={selectedMove} />
+        </Drawer>
       </Fragment>
     );
   };
