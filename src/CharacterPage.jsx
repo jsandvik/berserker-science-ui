@@ -6,10 +6,6 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Drawer from "@material-ui/core/Drawer";
 import { stringify } from "querystring";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 
 const SIZE = 100;
 const CHARACTERS = [
@@ -208,14 +204,6 @@ class CharacterPage extends Component {
 
     return (
       <Fragment>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6">Berserker Science</Typography>
-          </Toolbar>
-        </AppBar>
         <AppBar position="static">
           <Tabs
             value={categoryIndex}
