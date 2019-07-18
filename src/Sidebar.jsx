@@ -7,15 +7,13 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import { NAMES, IMAGES } from "./characterInfo.js";
+import { Link } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
@@ -33,6 +31,15 @@ const useStyles = makeStyles(theme => ({
     padding: "0 8px",
     ...theme.mixins.toolbar,
     justifyContent: "flex-end"
+  },
+  // overrides default link styling, we don't want highlighted buttons
+  link: {
+    color: "inherit",
+    textDecoration: "inherit",
+    "&:hover": {
+      color: "inherit",
+      textDecoration: "inherit",
+    }
   }
 }));
 
@@ -61,19 +68,23 @@ export default function Sidebar(props) {
       </div>
       <Divider />
       <List>
-        <ListItem button>
-          <ListItemText primary={"View All"} />
-        </ListItem>
+        <Link to="/" className={classes.link}>
+          <ListItem button>
+            <ListItemText primary={"View All"} />
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>
         {Object.keys(NAMES).map(character => (
-          <ListItem button key={character}>
-            <ListItemAvatar>
-              <Avatar alt="Cindy Baker" src={IMAGES[character]} />
-            </ListItemAvatar>
-            <ListItemText primary={NAMES[character]} />
-          </ListItem>
+          <Link to={`/${character}`} className={classes.link}>
+            <ListItem button key={character}>
+              <ListItemAvatar>
+                <Avatar alt={character} src={IMAGES[character]} />
+              </ListItemAvatar>
+              <ListItemText primary={NAMES[character]} />
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Drawer>

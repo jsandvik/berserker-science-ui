@@ -55,21 +55,22 @@ export default function App() {
   }
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <Navbar open={open} onSidebarOpen={handleSidebarOpen} />
-      <Sidebar open={open} onSidebarClose={handleSidebarClose} />
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open
-        })}
-      >
-        <div className={classes.drawerHeader} />
-        <Router basename="/soulcalibur">
+    <Router basename="/soulcalibur">
+      <div className={classes.root}>
+        <CssBaseline />
+        <Navbar open={open} onSidebarOpen={handleSidebarOpen} />
+        <Sidebar open={open} onSidebarClose={handleSidebarClose} />
+        <main
+          className={clsx(classes.content, {
+            [classes.contentShift]: open
+          })}
+        >
+          <div className={classes.drawerHeader} />
+
           <Route path="/" exact component={SearchPage} />
           <Route path="/:character" component={CharacterPage} />
-        </Router>
-      </main>
-    </div>
+        </main>
+      </div>
+    </Router>
   );
 }

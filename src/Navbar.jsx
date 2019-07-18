@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 const useStyles = makeStyles(theme => ({
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
