@@ -12,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Navbar from "./Navbar.jsx";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"

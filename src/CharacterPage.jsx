@@ -7,33 +7,6 @@ import Tab from "@material-ui/core/Tab";
 import Drawer from "@material-ui/core/Drawer";
 import { stringify } from "querystring";
 
-const SIZE = 100;
-const CHARACTERS = [
-  "2B",
-  "Amy",
-  "Astaroth",
-  "Azwel",
-  "Cervantes",
-  "Geralt",
-  "Groh",
-  "Ivy",
-  "Kilik",
-  "Maxi",
-  "Mitsurugi",
-  "Nightmare",
-  "Raphael",
-  "Seung Mi-na",
-  "Siegfried",
-  "Sophitia",
-  "Taki",
-  "Talim",
-  "Tira",
-  "Voldo",
-  "Xianghua",
-  "Yoshimitsu",
-  "Zasalamel"
-];
-
 class CharacterPage extends Component {
   state = {
     loading: true,
@@ -85,8 +58,6 @@ class CharacterPage extends Component {
 
   fetchMoves = () => {
     const {
-      currentPage,
-      command,
       columnSort,
       sortDescending,
       categoryIndex,
@@ -146,12 +117,25 @@ class CharacterPage extends Component {
   };
 
   componentDidMount = () => {
+    const character = this.props.match.params;
+
     this.fetchCategories();
     this.fetchMoves();
+    this.setState({ character });
   };
 
-  onPageChange = page => {
-    this.setState({ currentPage: page }, this.fetchMoves);
+  // TODO: this is a deprecated method
+  // replace it with hooks or something
+  componentWillReceiveProps = nextProps => {
+    const character = this.props.match.params;
+    const nextCharacter = nextProps.match.params;
+
+    if (character !== nextCharacter) {
+      this.setState({ character }, () => {
+        this.fetchCategories();
+        this.fetchMoves();
+      });
+    }
   };
 
   handleSort = attribute => {
@@ -177,12 +161,6 @@ class CharacterPage extends Component {
   };
 
   render = () => {
-    const {
-      match: {
-        params: { character }
-      }
-    } = this.props;
-
     const {
       error,
       loading,
