@@ -131,7 +131,7 @@ class CharacterPage extends Component {
     const nextCharacter = nextProps.match.params;
 
     if (character !== nextCharacter) {
-      this.setState({ character }, () => {
+      this.setState({ character, categoryIndex: 0 }, () => {
         this.fetchCategories();
         this.fetchMoves();
       });
