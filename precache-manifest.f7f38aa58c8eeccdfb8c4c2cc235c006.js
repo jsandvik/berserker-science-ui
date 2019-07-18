@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "55536c8e9e9a532651e3cf374f290ea3",
-    "url": "/soulcalibur/static/media/roboto-latin-300.55536c8e.woff2"
+    "revision": "c99e9d63d28fa144cbd794ae55a09aab",
+    "url": "/soulcalibur/static/media/seung-mi-na.c99e9d63.png"
   },
   {
-    "revision": "77e9d35bf2cdd4f19898",
+    "revision": "5244324f3c755906f83d",
     "url": "/soulcalibur/static/css/main.e802a66b.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/open-iconic.eca2c267.svg"
   },
   {
-    "revision": "ccd4154f952840fc5879",
-    "url": "/soulcalibur/static/js/2.b90133fa.chunk.js"
+    "revision": "e1580cd8dc0d56c2df55",
+    "url": "/soulcalibur/static/js/2.176bf8fc.chunk.js"
   },
   {
     "revision": "1510a9b72e479495f77966599440b093",
@@ -112,12 +112,96 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/zasalamel.c881cea9.png"
   },
   {
+    "revision": "57778731fb0d5976ca264d901766ddbd",
+    "url": "/soulcalibur/static/media/astaroth.57778731.png"
+  },
+  {
+    "revision": "98fc82a40feafad0843f8ffe8db84189",
+    "url": "/soulcalibur/static/media/azwel.98fc82a4.png"
+  },
+  {
+    "revision": "b96cdced2351b3f75277d7aa57d5a422",
+    "url": "/soulcalibur/static/media/cervantes.b96cdced.png"
+  },
+  {
+    "revision": "0af2c6719346153a1824c57480934303",
+    "url": "/soulcalibur/static/media/geralt.0af2c671.png"
+  },
+  {
+    "revision": "5db565172510b763099a7c57e3eabb62",
+    "url": "/soulcalibur/static/media/groh.5db56517.png"
+  },
+  {
+    "revision": "a3038f207afec4a17dbf7e9fc57e6a48",
+    "url": "/soulcalibur/static/media/ivy.a3038f20.png"
+  },
+  {
+    "revision": "8588887befd0a00f85cd627cbec852aa",
+    "url": "/soulcalibur/static/media/kilik.8588887b.png"
+  },
+  {
+    "revision": "91ef3a5216bbcde5a0fd4dc1b975a9e7",
+    "url": "/soulcalibur/static/media/maxi.91ef3a52.png"
+  },
+  {
+    "revision": "da8ed3da4ebd6d7c6bfebf061036c99e",
+    "url": "/soulcalibur/static/media/mitsurugi.da8ed3da.png"
+  },
+  {
+    "revision": "01c020a9956d0486567d10da38d51928",
+    "url": "/soulcalibur/static/media/nightmare.01c020a9.png"
+  },
+  {
+    "revision": "2c857e6b2e6f2de8415d68b43039d922",
+    "url": "/soulcalibur/static/media/raphael.2c857e6b.png"
+  },
+  {
+    "revision": "5244324f3c755906f83d",
+    "url": "/soulcalibur/static/js/main.67515265.chunk.js"
+  },
+  {
+    "revision": "2b82bf89ebe5106b4655b989d7b42f26",
+    "url": "/soulcalibur/static/media/siegfried.2b82bf89.png"
+  },
+  {
+    "revision": "eb16dba6fa2a050595c1b03084e5aa60",
+    "url": "/soulcalibur/static/media/sophitia.eb16dba6.png"
+  },
+  {
+    "revision": "244aa03b48a3163b6f76ca462c36adfe",
+    "url": "/soulcalibur/static/media/taki.244aa03b.png"
+  },
+  {
+    "revision": "1b4684ee54d886e8c9afa718144f741c",
+    "url": "/soulcalibur/static/media/talim.1b4684ee.png"
+  },
+  {
+    "revision": "15e3226e865d77b3e36dcc676830e2b6",
+    "url": "/soulcalibur/static/media/tira.15e3226e.png"
+  },
+  {
+    "revision": "a4173aac3e9fc890df3f92ff2595e9e2",
+    "url": "/soulcalibur/static/media/voldo.a4173aac.png"
+  },
+  {
+    "revision": "3a444e85b2bcb72caacfd80eced28dab",
+    "url": "/soulcalibur/static/media/xianghua.3a444e85.png"
+  },
+  {
+    "revision": "d204797e443013db08107ac142f08c90",
+    "url": "/soulcalibur/static/media/yoshimitsu.d204797e.png"
+  },
+  {
+    "revision": "9a852e2ed01fbbc7f1c52ceaad3a3840",
+    "url": "/soulcalibur/static/media/zasalamel.9a852e2e.png"
+  },
+  {
     "revision": "987b84570ea69ee660455b8d5e91f5f1",
     "url": "/soulcalibur/static/media/roboto-latin-100.987b8457.woff2"
   },
   {
-    "revision": "77e9d35bf2cdd4f19898",
-    "url": "/soulcalibur/static/js/main.6d2b6c19.chunk.js"
+    "revision": "55536c8e9e9a532651e3cf374f290ea3",
+    "url": "/soulcalibur/static/media/roboto-latin-300.55536c8e.woff2"
   },
   {
     "revision": "5d4aeb4e5f5ef754e307d7ffaef688bd",
@@ -152,16 +236,16 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/roboto-latin-300.a1471d1d.woff"
   },
   {
-    "revision": "210a7c781f5a354a0e4985656ab456d9",
-    "url": "/soulcalibur/static/media/roboto-latin-300italic.210a7c78.woff"
+    "revision": "bafb105baeb22d965c70fe52ba6b49d9",
+    "url": "/soulcalibur/static/media/roboto-latin-400.bafb105b.woff"
   },
   {
     "revision": "d69924b98acd849cdeba9fbff3f88ea6",
     "url": "/soulcalibur/static/media/roboto-latin-300italic.d69924b9.woff2"
   },
   {
-    "revision": "bafb105baeb22d965c70fe52ba6b49d9",
-    "url": "/soulcalibur/static/media/roboto-latin-400.bafb105b.woff"
+    "revision": "210a7c781f5a354a0e4985656ab456d9",
+    "url": "/soulcalibur/static/media/roboto-latin-300italic.210a7c78.woff"
   },
   {
     "revision": "d8bcbe724fd6f4ba44d0ee6a2675890f",
@@ -172,12 +256,12 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/roboto-latin-400italic.9680d5a0.woff"
   },
   {
-    "revision": "de8b7431b74642e830af4d4f4b513ec9",
-    "url": "/soulcalibur/static/media/roboto-latin-500.de8b7431.woff"
-  },
-  {
     "revision": "510dec37fa69fba39593e01a469ee018",
     "url": "/soulcalibur/static/media/roboto-latin-500italic.510dec37.woff2"
+  },
+  {
+    "revision": "de8b7431b74642e830af4d4f4b513ec9",
+    "url": "/soulcalibur/static/media/roboto-latin-500.de8b7431.woff"
   },
   {
     "revision": "ffcc050b2d92d4b14a4fcb527ee0bcc8",
@@ -216,19 +300,19 @@ self.__precacheManifest = [
     "url": "/soulcalibur/static/media/open-iconic.527eff64.otf"
   },
   {
-    "revision": "47151e87c5a8666791a91007de4962da",
-    "url": "/soulcalibur/static/media/open-iconic.47151e87.eot"
-  },
-  {
     "revision": "93cc7aa654ae36b0828716f5ec3159cd",
     "url": "/soulcalibur/static/media/open-iconic.93cc7aa6.ttf"
   },
   {
-    "revision": "ccd4154f952840fc5879",
+    "revision": "47151e87c5a8666791a91007de4962da",
+    "url": "/soulcalibur/static/media/open-iconic.47151e87.eot"
+  },
+  {
+    "revision": "e1580cd8dc0d56c2df55",
     "url": "/soulcalibur/static/css/2.252d4309.chunk.css"
   },
   {
-    "revision": "ad48aaf13afd7ef5293f624de05eddd4",
+    "revision": "e2a86b9f67ae0be8004e58a075f1c344",
     "url": "/soulcalibur/index.html"
   }
 ];
