@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import SortIcon from "./SortIcon.jsx";
 import Badge from "react-bootstrap/Badge";
 import Portrait from "./Portrait.jsx";
 import HitAttribute from "./HitAttribute.jsx";
@@ -11,6 +10,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import TableSortLabel from "@material-ui/core/TableSortLabel";
 
 export default class MoveTable extends Component {
   static propTypes = {
@@ -36,7 +36,7 @@ export default class MoveTable extends Component {
     const {
       moves,
       columnSort,
-      sortDescending,
+      order,
       onSelect,
       onSort,
       selectedMove
@@ -44,7 +44,7 @@ export default class MoveTable extends Component {
 
     return (
       <div style={{ overflowX: "auto" }}>
-        <Table size="small" className={'app-table'}>
+        <Table size="small" className={"app-table"}>
           <TableHead>
             <TableRow>
               <TableCell className={this.getVisibilityClass("character")}>
@@ -63,49 +63,57 @@ export default class MoveTable extends Component {
                 className={`${this.getVisibilityClass(
                   "impact_frames"
                 )} sortable-table-header`}
-                onClick={() => onSort("impact_frames")}
+                sortDirection={columnSort === "impact_frames" ? order : false}
               >
-                Impact{" "}
-                <SortIcon
+                <TableSortLabel
                   active={columnSort === "impact_frames"}
-                  descending={sortDescending}
-                />
+                  direction={order}
+                  onClick={() => onSort("impact_frames")}
+                >
+                  Impact
+                </TableSortLabel>
               </TableCell>
               <TableCell
                 className={`${this.getVisibilityClass(
                   "block_frames"
                 )} sortable-table-header`}
-                onClick={() => onSort("block_frames")}
+                sortDirection={columnSort === "block_frames" ? order : false}
               >
-                Block{" "}
-                <SortIcon
+                <TableSortLabel
                   active={columnSort === "block_frames"}
-                  descending={sortDescending}
-                />
+                  direction={order}
+                  onClick={() => onSort("block_frames")}
+                >
+                  Block
+                </TableSortLabel>
               </TableCell>
               <TableCell
                 className={`${this.getVisibilityClass(
                   "hit_frames"
                 )} sortable-table-header`}
-                onClick={() => onSort("hit_frames")}
+                sortDirection={columnSort === "hit_frames" ? order : false}
               >
-                Hit{" "}
-                <SortIcon
+                <TableSortLabel
                   active={columnSort === "hit_frames"}
-                  descending={sortDescending}
-                />
+                  direction={order}
+                  onClick={() => onSort("hit_frames")}
+                >
+                  Hit
+                </TableSortLabel>
               </TableCell>
               <TableCell
                 className={`${this.getVisibilityClass(
                   "counter_frames"
                 )} sortable-table-header`}
-                onClick={() => onSort("counter_frames")}
+                sortDirection={columnSort === "counter_frames" ? order : false}
               >
-                Counter{" "}
-                <SortIcon
+                <TableSortLabel
                   active={columnSort === "counter_frames"}
-                  descending={sortDescending}
-                />
+                  direction={order}
+                  onClick={() => onSort("counter_frames")}
+                >
+                  Counter
+                </TableSortLabel>
               </TableCell>
               <TableCell className={this.getVisibilityClass("damage")}>
                 Damage

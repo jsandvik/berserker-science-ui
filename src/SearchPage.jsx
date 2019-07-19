@@ -210,7 +210,7 @@ class SearchPage extends Component {
           <MoveTable
             moves={moves}
             columnSort={columnSort}
-            sortDescending={sortDescending}
+            order={sortDescending ? "desc": "asc"}
             onSelect={this.handleSelectRow}
             onSort={this.handleSort}
             selectedMove={selectedMove}

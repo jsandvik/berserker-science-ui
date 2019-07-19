@@ -196,7 +196,7 @@ class CharacterPage extends Component {
         <MoveTable
           moves={moves}
           columnSort={columnSort}
-          sortDescending={sortDescending}
+          order={sortDescending ? "desc": "asc"}
           hiddenColumns={["character"]}
           onSort={this.handleSort}
           onSelect={this.handleMoveSelect}
