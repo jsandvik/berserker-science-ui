@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
@@ -48,7 +48,7 @@ export default function Sidebar(props) {
   const theme = useTheme();
 
   return (
-    <Drawer
+    <SwipeableDrawer
       className={classes.drawer}
       variant="persistent"
       anchor="left"
@@ -87,6 +87,6 @@ export default function Sidebar(props) {
           </Link>
         ))}
       </List>
-    </Drawer>
+    </SwipeableDrawer>
   );
 }
