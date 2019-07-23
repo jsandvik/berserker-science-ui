@@ -143,7 +143,7 @@ export default class MoveTable extends Component {
                 </TableCell>
                 <TableCell className={this.getVisibilityClass("properties")}>
                   {move.moveProperties.map(property => (
-                    <MoveProperty property={property} />
+                    <MoveProperty property={property} lethalHitCondition={move.lethalHitCondition}  />
                   ))}
                 </TableCell>
                 <TableCell className={this.getVisibilityClass("impact_frames")}>

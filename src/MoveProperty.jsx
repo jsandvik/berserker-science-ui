@@ -9,6 +9,7 @@ import SG from "./move_properties/SG.png";
 import SS from "./move_properties/SS.png";
 import TH from "./move_properties/TH.png";
 import UA from "./move_properties/UA.png";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const MOVE_PROPERTIES = {
   BA: BA,
@@ -19,15 +20,23 @@ const MOVE_PROPERTIES = {
   SG: SG,
   SS: SS,
   TH: TH,
-  UA: UA,
+  UA: UA
 };
 
 export default class MoveProperty extends Component {
   render = () => {
-    const { property } = this.props;
+    const { property, lethalHitCondition } = this.props;
     const image = MOVE_PROPERTIES[property];
     if (image === undefined) {
       return <span>{property}</span>;
+    }
+
+    if (lethalHitCondition && property == "LH") {
+      return (
+        <Tooltip title={lethalHitCondition}>
+          <img className={styles.property} src={image} alt={property} />
+        </Tooltip>
+      );
     }
 
     return <img className={styles.property} src={image} alt={property} />;

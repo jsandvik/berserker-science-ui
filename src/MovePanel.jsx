@@ -11,6 +11,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
+import { Typography } from "@material-ui/core";
 
 export default class MovePanel extends Component {
   render = () => {
@@ -66,36 +67,44 @@ export default class MovePanel extends Component {
                 <TableCell>{move.damage.join(", ")}</TableCell>
               </TableRow>
             </TableBody>
-            <TableBody>
-              <TableRow />
-            </TableBody>
           </Table>
         </Grid>
-        {move.combos.length != 0 &&
         <Grid item xs={12} sm={9}>
+          {move.lethalHitCondition &&
           <Table size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell>Combos</TableCell>
-                <TableCell>Damage</TableCell>
-                <TableCell>Condition</TableCell>
-                <TableCell>Notes</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {move.combos.map(combo => (
+          <TableBody>
+            <TableRow>
+              <TableCell variant="head">Lethal Hit</TableCell>
+              <TableCell>{move.lethalHitCondition}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+          }
+          {move.combos.length != 0 && (
+            <Table size="small">
+              <TableHead>
                 <TableRow>
-                  <TableCell>{combo.commands}</TableCell>
-                  <TableCell>{combo.damage}</TableCell>
-                  <TableCell>
-                    <Chip size="small" label={combo.condition} />
-                  </TableCell>
-                  <TableCell>{combo.notes}</TableCell>
+                  <TableCell>Combos</TableCell>
+                  <TableCell>Damage</TableCell>
+                  <TableCell>Condition</TableCell>
+                  <TableCell>Notes</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Grid>}
+              </TableHead>
+              <TableBody>
+                {move.combos.map(combo => (
+                  <TableRow>
+                    <TableCell>{combo.commands}</TableCell>
+                    <TableCell>{combo.damage}</TableCell>
+                    <TableCell>
+                      <Chip size="small" label={combo.condition} />
+                    </TableCell>
+                    <TableCell>{combo.notes}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
+        </Grid>
       </Grid>
     );
   };
