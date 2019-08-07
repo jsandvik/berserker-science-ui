@@ -2,6 +2,7 @@ import yorha from './portraits/2B.png';
 import amy from './portraits/amy.png';
 import astaroth from './portraits/astaroth.png';
 import azwel from './portraits/azwel.png';
+import cassandra from './portraits/cassandra.png';
 import cervantes from './portraits/cervantes.png';
 import geralt from './portraits/geralt.png';
 import groh from './portraits/groh.png';
@@ -22,9 +23,9 @@ import xianghua from './portraits/xianghua.png';
 import yoshimitsu from './portraits/yoshimitsu.png';
 import zasalamel from './portraits/zasalamel.png';
 
-
 import astarothL from './large_portraits/astaroth.png';
 import azwelL from './large_portraits/azwel.png';
+import cassandraL from './large_portraits/cassandra.png';
 import cervantesL from './large_portraits/cervantes.png';
 import geraltL from './large_portraits/geralt.png';
 import grohL from './large_portraits/groh.png';
@@ -50,6 +51,7 @@ export const IMAGES = {
     "amy": amy,
     "astaroth": astaroth,
     "azwel": azwel,
+    "cassandra": cassandra,
     "cervantes": cervantes,
     "geralt": geralt,
     "groh": groh,
@@ -76,6 +78,7 @@ export const LARGE_IMAGES = {
     "amy": null,
     "astaroth": astarothL,
     "azwel": azwelL,
+    "cassandra": cassandraL,
     "cervantes": cervantesL,
     "geralt": geraltL,
     "groh": grohL,
@@ -102,6 +105,7 @@ export const NAMES = {
     "amy": "Amy",
     "astaroth": "Astaroth",
     "azwel": "Azwel",
+    "cassandra": "Cassandra",
     "cervantes": "Cervantes",
     "geralt": "Geralt",
     "groh": "Groh",

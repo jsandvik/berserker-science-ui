@@ -8,33 +8,9 @@ import MoveTable from "./MoveTable.jsx";
 import MovePanel from "./MovePanel.jsx";
 import { stringify } from "querystring";
 import Drawer from "@material-ui/core/Drawer";
+import { NAMES } from "./characterInfo.js";
 
 const SIZE = 100;
-const CHARACTERS = [
-  "2B",
-  "Amy",
-  "Astaroth",
-  "Azwel",
-  "Cervantes",
-  "Geralt",
-  "Groh",
-  "Ivy",
-  "Kilik",
-  "Maxi",
-  "Mitsurugi",
-  "Nightmare",
-  "Raphael",
-  "Seung Mi-na",
-  "Siegfried",
-  "Sophitia",
-  "Taki",
-  "Talim",
-  "Tira",
-  "Voldo",
-  "Xianghua",
-  "Yoshimitsu",
-  "Zasalamel"
-];
 
 class SearchPage extends Component {
   state = {
@@ -189,8 +165,8 @@ class SearchPage extends Component {
                   value={character}
                 >
                   <option value="">All</option>
-                  {CHARACTERS.map(character => (
-                    <option key={character}>{character}</option>
+                  {Object.keys(NAMES).map(character => (
+                    <option key={character}>{NAMES[character]}</option>
                   ))}
                 </Form.Control>
               </Form.Group>
