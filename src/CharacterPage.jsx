@@ -74,12 +74,16 @@ class CharacterPage extends Component {
       character
     };
 
-    const category = categories[categoryIndex];
-    if (category) {
-      args["category"] = category;
-    } else {
-      args["category"] = "Horizontals";
-    }
+    // if category === -1, do not filter by category (fetch all categories)
+    // if actual, index, fetch the right category. Filter by horizontals as a default
+    if (categoryIndex !== -1) {
+      const category = categories[categoryIndex];
+      if (category) {
+        args["category"] = category;
+      } else {
+        args["category"] = "Horizontals";
+      }
+    } 
 
     if (columnSort) {
       const orderBy = [];
@@ -191,6 +195,7 @@ class CharacterPage extends Component {
             {categories.map(category => (
               <Tab label={category} />
             ))}
+            <Tab label="All Moves" value={-1} />
           </Tabs>
         </AppBar>
         <MoveTable
