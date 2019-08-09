@@ -1,7 +1,7 @@
 {
   "name": "sc-frontend",
   "version": "0.1.0",
-  "homepage": "https://jsandvik.github.io/soulcalibur",
+  "homepage": "berserker.science",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.2.0",

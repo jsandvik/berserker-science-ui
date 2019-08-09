@@ -56,7 +56,7 @@ export default function App() {
   }
 
   return (
-    <Router basename="/soulcalibur">
+    <Router basename="/">
       <div className={classes.root}>
         <CssBaseline />
         <Navbar open={open} onSidebarOpen={handleSidebarOpen} />
