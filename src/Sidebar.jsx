@@ -77,7 +77,7 @@ export default function Sidebar(props) {
       <Divider />
       <List>
         {Object.keys(NAMES).map(character => (
-          <Link to={`/${character}`} className={classes.link}>
+          <Link to={`/${character}`} className={classes.link} onClick={props.onSidebarClose}>
             <ListItem button key={character}>
               <ListItemAvatar>
                 <Avatar alt={character} src={IMAGES[character]} />
